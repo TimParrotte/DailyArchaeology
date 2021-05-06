@@ -1,15 +1,14 @@
 package com.dailyarchaeology.met_artifacts.domain;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Item {
-    private int objectId;
-    private boolean isHighlight;
+    private Integer objectId;
+    private Boolean isHighlight;
     private String accessionNumber;
     private String accessionYear;
-    private boolean isPublicDomain;
+    private Boolean isPublicDomain;
     private String primaryImage;
     private String primaryImageSmall;
     private ArrayList<String> additionalImages;
@@ -25,7 +24,7 @@ public class Item {
     private String artistRole;
     private String artistPrefix;
     private String artistDisplayName;
-    private String artistDispalyBio;
+    private String artistDisplayBio;
     private String artistSuffix;
     private String artistAlphaSort;
     private String artistNationality;
@@ -35,11 +34,11 @@ public class Item {
     private String artistWikidata_URL;
     private String artistULAN_URL;
     private String objectDate;
-    private int objectBeginDate;
-    private int objectEndDate;
+    private Integer objectBeginDate;
+    private Integer objectEndDate;
     private String medium;
     private String dimensions;
-    private float dimensionsParsed;
+    private Float dimensionsParsed;
     private ArrayList<String> measurements;
     private String creditLine;
     private String geographyType;
@@ -55,28 +54,28 @@ public class Item {
     private String classification;
     private String rightsAndReproduction;
     private String linkResource;
-    private LocalDateTime metadataDate;
+    private String metadataDate;
     private String repository;
     private String objectURL;
     private ArrayList<String> tags;
     private String objectWikidata_URL;
-    private boolean isTimelineWork;
+    private Boolean isTimelineWork;
     private String galleryNumber;
     
-    public int getObjectId() {
+    public Integer getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(int objectId) {
+    public void setObjectId(Integer objectId) {
         this.objectId = objectId;
     }
 
-    public boolean isHighlight() {
+    public Boolean isHighlight() {
         return isHighlight;
     }
 
-    public void setHighlight(boolean highlight) {
-        isHighlight = highlight;
+    public void setIsHighlight(Boolean isHighlight) {
+        this.isHighlight = isHighlight;
     }
 
     public String getAccessionNumber() {
@@ -95,12 +94,12 @@ public class Item {
         this.accessionYear = accessionYear;
     }
 
-    public boolean isPublicDomain() {
+    public Boolean isPublicDomain() {
         return isPublicDomain;
     }
 
-    public void setPublicDomain(boolean publicDomain) {
-        isPublicDomain = publicDomain;
+    public void setIsPublicDomain(Boolean isPublicDomain) {
+        this.isPublicDomain = isPublicDomain;
     }
 
     public String getPrimaryImage() {
@@ -223,12 +222,12 @@ public class Item {
         this.artistDisplayName = artistDisplayName;
     }
 
-    public String getArtistDispalyBio() {
-        return artistDispalyBio;
+    public String getArtistDisplayBio() {
+        return artistDisplayBio;
     }
 
-    public void setArtistDispalyBio(String artistDispalyBio) {
-        this.artistDispalyBio = artistDispalyBio;
+    public void setArtistDisplayBio(String artistDisplayBio) {
+        this.artistDisplayBio = artistDisplayBio;
     }
 
     public String getArtistSuffix() {
@@ -303,19 +302,19 @@ public class Item {
         this.objectDate = objectDate;
     }
 
-    public int getObjectBeginDate() {
+    public Integer getObjectBeginDate() {
         return objectBeginDate;
     }
 
-    public void setObjectBeginDate(int objectBeginDate) {
+    public void setObjectBeginDate(Integer objectBeginDate) {
         this.objectBeginDate = objectBeginDate;
     }
 
-    public int getObjectEndDate() {
+    public Integer getObjectEndDate() {
         return objectEndDate;
     }
 
-    public void setObjectEndDate(int objectEndDate) {
+    public void setObjectEndDate(Integer objectEndDate) {
         this.objectEndDate = objectEndDate;
     }
 
@@ -463,11 +462,11 @@ public class Item {
         this.linkResource = linkResource;
     }
 
-    public LocalDateTime getMetadataDate() {
+    public String getMetadataDate() {
         return metadataDate;
     }
 
-    public void setMetadataDate(LocalDateTime metadataDate) {
+    public void setMetadataDate(String metadataDate) {
         this.metadataDate = metadataDate;
     }
 
@@ -503,12 +502,12 @@ public class Item {
         this.objectWikidata_URL = objectWikidata_URL;
     }
 
-    public boolean isTimelineWork() {
+    public Boolean getIsTimelineWork() {
         return isTimelineWork;
     }
 
-    public void setTimelineWork(boolean timelineWork) {
-        isTimelineWork = timelineWork;
+    public void setIsTimelineWork(Boolean isTimelineWork) {
+        isTimelineWork = isTimelineWork;
     }
 
     public String getGalleryNumber() {
@@ -533,65 +532,26 @@ public class Item {
     }
 
     @Override
-    public String toString() {
-        return "Item{" +
-                "objectId=" + objectId +
-                ", isHighlight=" + isHighlight +
-                ", accessionNumber='" + accessionNumber + '\'' +
-                ", accessionYear='" + accessionYear + '\'' +
-                ", isPublicDomain=" + isPublicDomain +
-                ", primaryImage='" + primaryImage + '\'' +
-                ", primaryImageSmall='" + primaryImageSmall + '\'' +
-                ", additionalImages=" + additionalImages +
-                ", constituents=" + constituents +
-                ", department='" + department + '\'' +
-                ", objectName='" + objectName + '\'' +
-                ", title='" + title + '\'' +
-                ", culture='" + culture + '\'' +
-                ", period='" + period + '\'' +
-                ", dynasty='" + dynasty + '\'' +
-                ", reign='" + reign + '\'' +
-                ", portfolio='" + portfolio + '\'' +
-                ", artistRole='" + artistRole + '\'' +
-                ", artistPrefix='" + artistPrefix + '\'' +
-                ", artistDisplayName='" + artistDisplayName + '\'' +
-                ", artistDispalyBio='" + artistDispalyBio + '\'' +
-                ", artistSuffix='" + artistSuffix + '\'' +
-                ", artistAlphaSort='" + artistAlphaSort + '\'' +
-                ", artistNationality='" + artistNationality + '\'' +
-                ", artistBeginDate='" + artistBeginDate + '\'' +
-                ", artistEndDate='" + artistEndDate + '\'' +
-                ", artistGender='" + artistGender + '\'' +
-                ", artistWikidata_URL='" + artistWikidata_URL + '\'' +
-                ", artistULAN_URL='" + artistULAN_URL + '\'' +
-                ", objectDate='" + objectDate + '\'' +
-                ", objectBeginDate=" + objectBeginDate +
-                ", objectEndDate=" + objectEndDate +
-                ", medium='" + medium + '\'' +
-                ", dimensions='" + dimensions + '\'' +
-                ", dimensionsParsed=" + dimensionsParsed +
-                ", measurements=" + measurements +
-                ", creditLine='" + creditLine + '\'' +
-                ", geographyType='" + geographyType + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", county='" + county + '\'' +
-                ", country='" + country + '\'' +
-                ", region='" + region + '\'' +
-                ", subregion='" + subregion + '\'' +
-                ", locus='" + locus + '\'' +
-                ", excavation='" + excavation + '\'' +
-                ", river='" + river + '\'' +
-                ", classification='" + classification + '\'' +
-                ", rightsAndReproduction='" + rightsAndReproduction + '\'' +
-                ", linkResource='" + linkResource + '\'' +
-                ", metadataDate=" + metadataDate +
-                ", repository='" + repository + '\'' +
-                ", objectURL='" + objectURL + '\'' +
-                ", tags=" + tags +
-                ", objectWikidata_URL='" + objectWikidata_URL + '\'' +
-                ", isTimelineWork=" + isTimelineWork +
-                ", galleryNumber='" + galleryNumber + '\'' +
-                '}';
-    }
+	public String toString() {
+		return "Item [objectId=" + objectId + ", isHighlight=" + isHighlight + ", accessionNumber=" + accessionNumber
+				+ ", accessionYear=" + accessionYear + ", isPublicDomain=" + isPublicDomain + ", primaryImage="
+				+ primaryImage + ", primaryImageSmall=" + primaryImageSmall + ", additionalImages=" + additionalImages
+				+ ", constituents=" + constituents + ", department=" + department + ", objectName=" + objectName
+				+ ", title=" + title + ", culture=" + culture + ", period=" + period + ", dynasty=" + dynasty
+				+ ", reign=" + reign + ", portfolio=" + portfolio + ", artistRole=" + artistRole + ", artistPrefix="
+				+ artistPrefix + ", artistDisplayName=" + artistDisplayName + ", artistDisplayBio=" + artistDisplayBio
+				+ ", artistSuffix=" + artistSuffix + ", artistAlphaSort=" + artistAlphaSort + ", artistNationality="
+				+ artistNationality + ", artistBeginDate=" + artistBeginDate + ", artistEndDate=" + artistEndDate
+				+ ", artistGender=" + artistGender + ", artistWikidata_URL=" + artistWikidata_URL + ", artistULAN_URL="
+				+ artistULAN_URL + ", objectDate=" + objectDate + ", objectBeginDate=" + objectBeginDate
+				+ ", objectEndDate=" + objectEndDate + ", medium=" + medium + ", dimensions=" + dimensions
+				+ ", dimensionsParsed=" + dimensionsParsed + ", measurements=" + measurements + ", creditLine="
+				+ creditLine + ", geographyType=" + geographyType + ", city=" + city + ", state=" + state + ", county="
+				+ county + ", country=" + country + ", region=" + region + ", subregion=" + subregion + ", locus="
+				+ locus + ", excavation=" + excavation + ", river=" + river + ", classification=" + classification
+				+ ", rightsAndReproduction=" + rightsAndReproduction + ", linkResource=" + linkResource
+				+ ", metadataDate=" + metadataDate + ", repository=" + repository + ", objectURL=" + objectURL
+				+ ", tags=" + tags + ", objectWikidata_URL=" + objectWikidata_URL + ", isTimelineWork=" + isTimelineWork
+				+ ", galleryNumber=" + galleryNumber + "]";
+	}
 }
