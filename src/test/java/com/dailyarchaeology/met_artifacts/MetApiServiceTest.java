@@ -2,6 +2,8 @@ package com.dailyarchaeology.met_artifacts;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -54,4 +56,25 @@ public class MetApiServiceTest {
 		Assertions.assertThat(searchResult.getObjectIDs().size()).isGreaterThan(0);
 	}
 	
+	@Test
+	public void assertThatGetRandomObjectIdReturnsRandomNumbersFromList() throws IOException {
+		// GIVEN
+		ArrayList<Integer> nums = new ArrayList<>(List.of(0,1,2,3,4));
+		SearchResult searchResult = new SearchResult(5, nums);
+		
+		// WHEN
+		Integer num1 = metApiService.getRandomObjectId(searchResult);
+		Integer num2 = metApiService.getRandomObjectId(searchResult);
+		Integer num3 = metApiService.getRandomObjectId(searchResult);
+		Integer num4 = metApiService.getRandomObjectId(searchResult);
+		Integer num5 = metApiService.getRandomObjectId(searchResult);
+		ArrayList<Integer> randomNums = new ArrayList<>(List.of(num1, num2, num3, num4, num5));
+		
+		// THEN
+		Assertions.assertThat(randomNums).isNotNull();
+		Assertions.assertThat(randomNums).isNotEmpty();
+		Assertions.assertThat(randomNums).hasSize(5);
+		// This final assertion has a small chance of producing a false negative due to its random nature.
+		Assertions.assertThat(randomNums).isNotEqualTo(nums);
+	}
 }

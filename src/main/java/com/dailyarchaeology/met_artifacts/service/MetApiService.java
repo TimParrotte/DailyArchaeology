@@ -86,4 +86,13 @@ public class MetApiService {
 		searchResult.setObjectIDs((ArrayList<Integer>) apiResponseMap.get("objectIDs"));
 		return searchResult;
 	}
+	
+	public Integer getRandomObjectId(SearchResult searchResult) throws IOException {
+		ArrayList<Integer> objectIds = searchResult.getObjectIDs();
+		if (objectIds.size() > 0) {
+			Collections.shuffle(objectIds);
+			return objectIds.get(0);
+		}
+		throw new IOException();
+	}
 }
