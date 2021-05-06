@@ -106,7 +106,7 @@ public class MetApiService {
 		item.setObjectEndDate((Integer) apiResponseMap.get("objectEndDate"));
 		item.setMedium((String) apiResponseMap.get("medium"));
 		item.setDimensions((String) apiResponseMap.get("dimensions"));
-		item.setDimensionsParsed((Float) apiResponseMap.get("dimensionsParsed"));
+		//item.setDimensionsParsed((Float) apiResponseMap.get("dimensionsParsed"));
 		item.setMeasurements((ArrayList<String>) apiResponseMap.get("measurements"));
 		item.setCreditLine((String) apiResponseMap.get("creditLine"));
 		item.setGeographyType((String) apiResponseMap.get("geographyType"));
@@ -116,6 +116,7 @@ public class MetApiService {
 		item.setCountry((String) apiResponseMap.get("country"));
 		item.setRegion((String) apiResponseMap.get("region"));
 		item.setSubregion((String) apiResponseMap.get("subregion"));
+		item.setLocale((String) apiResponseMap.get("locale"));
 		item.setLocus((String) apiResponseMap.get("locus"));
 		item.setExcavation((String) apiResponseMap.get("excavation"));
 		item.setRiver((String) apiResponseMap.get("river"));
@@ -128,7 +129,7 @@ public class MetApiService {
 		item.setTags((ArrayList<String>) apiResponseMap.get("tags"));
 		item.setObjectWikidata_URL((String) apiResponseMap.get("objectWikidata_URL"));
 		item.setIsTimelineWork((Boolean) apiResponseMap.get("isTimelineWork"));
-		item.setGalleryNumber((String) apiResponseMap.get("galleryNumber"));
+		item.setGalleryNumber((String) apiResponseMap.get("GalleryNumber"));
 		return item;
 	}
 	

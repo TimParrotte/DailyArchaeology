@@ -12,7 +12,7 @@ public class Item {
     private String primaryImage;
     private String primaryImageSmall;
     private ArrayList<String> additionalImages;
-    private ArrayList<String> constituents;
+    private ArrayList<String> constituents;	// TODO: Make constituents it's own class.
     private String department;
     private String objectName;
     private String title;
@@ -48,6 +48,7 @@ public class Item {
     private String country;
     private String region;
     private String subregion;
+    private String locale;
     private String locus;
     private String excavation;
     private String river;
@@ -70,7 +71,7 @@ public class Item {
         this.objectId = objectId;
     }
 
-    public Boolean isHighlight() {
+    public Boolean getIsHighlight() {
         return isHighlight;
     }
 
@@ -413,6 +414,14 @@ public class Item {
     public void setSubregion(String subregion) {
         this.subregion = subregion;
     }
+    
+    public String getLocale() {
+    	return locale;
+    }
+    
+    public void setLocale(String locale) {
+    	this.locale = locale;
+    }
 
     public String getLocus() {
         return locus;
@@ -507,7 +516,7 @@ public class Item {
     }
 
     public void setIsTimelineWork(Boolean isTimelineWork) {
-        isTimelineWork = isTimelineWork;
+        this.isTimelineWork = isTimelineWork;
     }
 
     public String getGalleryNumber() {
@@ -547,9 +556,9 @@ public class Item {
 				+ ", objectEndDate=" + objectEndDate + ", medium=" + medium + ", dimensions=" + dimensions
 				+ ", dimensionsParsed=" + dimensionsParsed + ", measurements=" + measurements + ", creditLine="
 				+ creditLine + ", geographyType=" + geographyType + ", city=" + city + ", state=" + state + ", county="
-				+ county + ", country=" + country + ", region=" + region + ", subregion=" + subregion + ", locus="
-				+ locus + ", excavation=" + excavation + ", river=" + river + ", classification=" + classification
-				+ ", rightsAndReproduction=" + rightsAndReproduction + ", linkResource=" + linkResource
+				+ county + ", country=" + country + ", region=" + region + ", subregion=" + subregion + ", locale="
+				+ locale + ", locus=" + locus + ", excavation=" + excavation + ", river=" + river + ", classification="
+				+ classification + ", rightsAndReproduction=" + rightsAndReproduction + ", linkResource=" + linkResource
 				+ ", metadataDate=" + metadataDate + ", repository=" + repository + ", objectURL=" + objectURL
 				+ ", tags=" + tags + ", objectWikidata_URL=" + objectWikidata_URL + ", isTimelineWork=" + isTimelineWork
 				+ ", galleryNumber=" + galleryNumber + "]";
