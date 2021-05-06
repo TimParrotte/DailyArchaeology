@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.dailyarchaeology.met_artifacts.service.MetApiService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.dailyarchaeology.met_artifacts.domain.Item;
 import com.dailyarchaeology.met_artifacts.domain.SearchResult;
 
@@ -60,14 +61,13 @@ public class MetApiServiceTest {
 	public void assertThatGetRandomObjectIdReturnsRandomNumbersFromList() throws IOException {
 		// GIVEN
 		ArrayList<Integer> nums = new ArrayList<>(List.of(0,1,2,3,4));
-		SearchResult searchResult = new SearchResult(5, nums);
 		
 		// WHEN
-		Integer num1 = metApiService.getRandomObjectId(searchResult);
-		Integer num2 = metApiService.getRandomObjectId(searchResult);
-		Integer num3 = metApiService.getRandomObjectId(searchResult);
-		Integer num4 = metApiService.getRandomObjectId(searchResult);
-		Integer num5 = metApiService.getRandomObjectId(searchResult);
+		Integer num1 = metApiService.getRandomItemId(nums);
+		Integer num2 = metApiService.getRandomItemId(nums);
+		Integer num3 = metApiService.getRandomItemId(nums);
+		Integer num4 = metApiService.getRandomItemId(nums);
+		Integer num5 = metApiService.getRandomItemId(nums);
 		ArrayList<Integer> randomNums = new ArrayList<>(List.of(num1, num2, num3, num4, num5));
 		
 		// THEN
@@ -211,5 +211,25 @@ public class MetApiServiceTest {
 		Assertions.assertThat(item.getObjectWikidata_URL()).isEmpty();
 		Assertions.assertThat(item.getIsTimelineWork()).isFalse();
 		Assertions.assertThat(item.getGalleryNumber()).isEqualTo("157");
+	}
+	
+	@Test
+	public void assertThatGetOldWorldObjectIdsIsPopulated() throws JsonProcessingException, IOException, InterruptedException {
+		// WHEN
+		ArrayList<Integer> objectIds = metApiService.getAncientOldWorldObjectIds();
+		
+		// THEN
+		Assertions.assertThat(objectIds).hasSizeGreaterThan(0);
+	}
+	
+	@Test
+	public void assertThatGetObjectForDisplayReturnsAValidApiRequest() throws JsonProcessingException, IOException, InterruptedException {
+		// WHEN
+		String apiRequest = metApiService.getItemForDisplay();
+		Integer itemNumber = Integer.parseInt(apiRequest.substring(64));
+		
+		// THEN
+		Assertions.assertThat(apiRequest).contains("https://collectionapi.metmuseum.org/public/collection/v1/object/");
+		Assertions.assertThat(itemNumber).isGreaterThan(0);
 	}
 }

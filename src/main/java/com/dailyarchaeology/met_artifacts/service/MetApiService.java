@@ -16,51 +16,49 @@ import org.springframework.stereotype.Service;
 import com.dailyarchaeology.met_artifacts.domain.Item;
 import com.dailyarchaeology.met_artifacts.domain.SearchResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class MetApiService {
 	
     private static final String baseMetApiUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
     private static final String metApiUrlObjectEndpoint = "object/";
-    private static final String metApiUrlSearch = "search?";
     private static final String searchByDepartmentUrl = "search?q=departmentId=";
-
 
     private static final Integer ancientNearEastDepartmentNumber = 3;
     private static final Integer egyptianArtDepartmentNumber = 10;
     private static final Integer greekAndRomanArtDepartmentNumber = 13;
 
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private static final HttpClient httpClient = HttpClient.newHttpClient();
     
     public static String getItemUrl(Integer itemNumber) {
         return baseMetApiUrl + metApiUrlObjectEndpoint + itemNumber;
     }
 
-    public static String getAncientNearEastArtUrl() {
+    private static String getAncientNearEastArtUrl() {
         return baseMetApiUrl + searchByDepartmentUrl + ancientNearEastDepartmentNumber;
     }
 
-    public static String getEgyptianArtUrl() {
+    private static String getEgyptianArtUrl() {
         return baseMetApiUrl + searchByDepartmentUrl + egyptianArtDepartmentNumber;
     }
 
-    public static String getGreekAndRomanArtUrl() {
+    private static String getGreekAndRomanArtUrl() {
         return baseMetApiUrl + searchByDepartmentUrl + greekAndRomanArtDepartmentNumber;
     }
     
-    public Integer selectRandomItem(SearchResult results) throws Exception {
-    	if  (results != null) {
-    		ArrayList<Integer> objectIds = results.getObjectIDs();
-    		Collections.shuffle(objectIds);
-    		return objectIds.get(0);
-    	}
-    	throw new Exception();  //This is probably better as a try/catch block.
+    public ArrayList<Integer> getAncientOldWorldObjectIds() throws JsonProcessingException, IOException, InterruptedException {
+    	ArrayList<Integer> objectIds = new ArrayList<>();
+    	SearchResult nearEastResult = convertApiResponseToSearchResult(getApiResponseAsString(getAncientNearEastArtUrl()));
+    	SearchResult egyptianResult = convertApiResponseToSearchResult(getApiResponseAsString(getEgyptianArtUrl()));
+    	SearchResult grecoRomanResult = convertApiResponseToSearchResult(getApiResponseAsString(getGreekAndRomanArtUrl()));
+    	objectIds.addAll(nearEastResult.getObjectIDs());
+    	objectIds.addAll(egyptianResult.getObjectIDs());
+    	objectIds.addAll(grecoRomanResult.getObjectIDs());
+    	return objectIds;
     }
-	
-	public String getApiResponseAsString(String itemUrl) throws IOException, InterruptedException {
-	   URI uri = URI.create(itemUrl);
+    
+	public static String getApiResponseAsString(String apiRequest) throws IOException, InterruptedException {
+	   URI uri = URI.create(apiRequest);
 	   HttpRequest request = HttpRequest.newBuilder()
 			   .GET().uri(uri).build();
 			  
@@ -143,12 +141,15 @@ public class MetApiService {
 		return searchResult;
 	}
 	
-	public Integer getRandomObjectId(SearchResult searchResult) throws IOException {
-		ArrayList<Integer> objectIds = searchResult.getObjectIDs();
+	public Integer getRandomItemId(ArrayList<Integer> objectIds) throws IOException {
 		if (objectIds.size() > 0) {
 			Collections.shuffle(objectIds);
 			return objectIds.get(0);
 		}
 		throw new IOException();
+	}
+	
+	public String getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
+		return getItemUrl(getRandomItemId(getAncientOldWorldObjectIds()));
 	}
 }
