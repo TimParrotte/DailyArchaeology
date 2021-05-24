@@ -21,7 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class MetApiService {
 	
     private static final String baseMetApiUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
-    private static final String metApiUrlObjectEndpoint = "object/";
+    private static final String metApiUrlObjectEndpoint = "objects/";
     private static final String searchByDepartmentUrl = "search?q=departmentId=";
 
     private static final Integer ancientNearEastDepartmentNumber = 3;
@@ -63,6 +63,7 @@ public class MetApiService {
 			   .GET().uri(uri).build();
 			  
 	   HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+	   System.out.println(response.body());
 	   return response.body();
    }
 
@@ -149,7 +150,13 @@ public class MetApiService {
 		throw new IOException();
 	}
 	
-	public String getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
+	public String getUrlOfSelectedItem() throws JsonProcessingException, IOException, InterruptedException {
 		return getItemUrl(getRandomItemId(getAncientOldWorldObjectIds()));
+	}
+	
+	public Item getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
+		String url = getUrlOfSelectedItem();
+		String apiResponse = getApiResponseAsString(url);
+		return convertApiResponseToItem(apiResponse);
 	}
 }

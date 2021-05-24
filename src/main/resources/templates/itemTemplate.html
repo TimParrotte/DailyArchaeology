@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Daily Archaeology</title>
+	</head>
+	<body>
+		<h1 th:text="'Item URL = ' + ${item.primaryImage}" />
+		<img th:src="${item.primaryImage}">
+		<h3 th:text="${item.objectName}" />
+		<p>This page at least rendered.</p>
+	</body>
+</html>

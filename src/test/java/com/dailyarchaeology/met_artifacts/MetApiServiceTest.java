@@ -225,7 +225,7 @@ public class MetApiServiceTest {
 	@Test
 	public void assertThatGetObjectForDisplayReturnsAValidApiRequest() throws JsonProcessingException, IOException, InterruptedException {
 		// WHEN
-		String apiRequest = metApiService.getItemForDisplay();
+		String apiRequest = metApiService.getUrlOfSelectedItem();
 		Integer itemNumber = Integer.parseInt(apiRequest.substring(64));
 		
 		// THEN
