@@ -3,6 +3,8 @@ package com.dailyarchaeology.met_artifacts;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -214,22 +216,54 @@ public class MetApiServiceTest {
 	}
 	
 	@Test
-	public void assertThatGetOldWorldObjectIdsIsPopulated() throws JsonProcessingException, IOException, InterruptedException {
+	public void assertThatGetOldWorldObjectIdsReturnsItemsFromTheCorrectDepartment() throws JsonProcessingException, IOException, InterruptedException {
 		// WHEN
-		ArrayList<Integer> objectIds = metApiService.getAncientOldWorldObjectIds();
+		List<Integer> objectIds = metApiService.getAncientOldWorldObjectIds();
+		Collections.shuffle(objectIds);
+		List<Integer> testObjectIds = objectIds.subList(0, 4);
+		List<String> departmentIds = Arrays.asList("Ancient Near Eastern Art","Egyptian Art","Greek and Roman Art");
 		
 		// THEN
 		Assertions.assertThat(objectIds).hasSizeGreaterThan(0);
+
+		
+		for (Integer testObjectId : testObjectIds) {
+			String url = MetApiService.getItemUrl(testObjectId);
+			String response = MetApiService.getApiResponseAsString(url);
+			Item item = metApiService.convertApiResponseToItem(response);
+			Assertions.assertThat(item.getDepartment()).isNotNull();
+			Assertions.assertThat(item.getDepartment()).isIn(departmentIds);
+		}
+	}
+	
+	@Test
+	public void assertOnlyAncientNearEastArtifacts() throws JsonProcessingException, IOException, InterruptedException {
+		// GIVEN
+    	SearchResult nearEastResult = metApiService.convertApiResponseToSearchResult(MetApiService.getApiResponseAsString(MetApiService.getAncientNearEastArtUrl()));
+    	List<Integer> objectIds = nearEastResult.getObjectIDs();
+    	
+		// WHEN
+    	Collections.shuffle(objectIds);
+    	List<Integer> testObjectIds = objectIds.subList(0, 4);
+    		
+		// THEN
+    	for (Integer testObjectId : testObjectIds) {
+			String url = MetApiService.getItemUrl(testObjectId);
+			String response = MetApiService.getApiResponseAsString(url);
+			Item item = metApiService.convertApiResponseToItem(response);
+			Assertions.assertThat(item.getDepartment()).isNotNull();
+			Assertions.assertThat(item.getDepartment()).isEqualTo("Ancient Near Eastern Art");
+    	}
 	}
 	
 	@Test
 	public void assertThatGetObjectForDisplayReturnsAValidApiRequest() throws JsonProcessingException, IOException, InterruptedException {
 		// WHEN
 		String apiRequest = metApiService.getUrlOfSelectedItem();
-		Integer itemNumber = Integer.parseInt(apiRequest.substring(64));
+		Integer itemNumber = Integer.parseInt(apiRequest.substring(65));
 		
 		// THEN
-		Assertions.assertThat(apiRequest).contains("https://collectionapi.metmuseum.org/public/collection/v1/object/");
+		Assertions.assertThat(apiRequest).contains("https://collectionapi.metmuseum.org/public/collection/v1/objects/");
 		Assertions.assertThat(itemNumber).isGreaterThan(0);
 	}
 }

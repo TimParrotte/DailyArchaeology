@@ -21,9 +21,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class MetApiService {
 	
     private static final String baseMetApiUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
-    private static final String metApiUrlObjectEndpoint = "objects/";
-    private static final String searchByDepartmentUrl = "search?q=departmentId=";
-
+    private static final String metApiUrlObjectEndpoint = "objects";
+    private static final String searchByDepartmentUrl = "?departmentIds=";
     private static final Integer ancientNearEastDepartmentNumber = 3;
     private static final Integer egyptianArtDepartmentNumber = 10;
     private static final Integer greekAndRomanArtDepartmentNumber = 13;
@@ -31,19 +30,19 @@ public class MetApiService {
     private static final HttpClient httpClient = HttpClient.newHttpClient();
     
     public static String getItemUrl(Integer itemNumber) {
-        return baseMetApiUrl + metApiUrlObjectEndpoint + itemNumber;
+        return baseMetApiUrl + metApiUrlObjectEndpoint + "/" + itemNumber;
     }
 
-    private static String getAncientNearEastArtUrl() {
-        return baseMetApiUrl + searchByDepartmentUrl + ancientNearEastDepartmentNumber;
+    public static String getAncientNearEastArtUrl() {
+        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + ancientNearEastDepartmentNumber;
     }
 
-    private static String getEgyptianArtUrl() {
-        return baseMetApiUrl + searchByDepartmentUrl + egyptianArtDepartmentNumber;
+    public static String getEgyptianArtUrl() {
+        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + egyptianArtDepartmentNumber;
     }
 
-    private static String getGreekAndRomanArtUrl() {
-        return baseMetApiUrl + searchByDepartmentUrl + greekAndRomanArtDepartmentNumber;
+    public static String getGreekAndRomanArtUrl() {
+        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + greekAndRomanArtDepartmentNumber;
     }
     
     public ArrayList<Integer> getAncientOldWorldObjectIds() throws JsonProcessingException, IOException, InterruptedException {
@@ -63,7 +62,6 @@ public class MetApiService {
 			   .GET().uri(uri).build();
 			  
 	   HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-	   System.out.println(response.body());
 	   return response.body();
    }
 
@@ -105,7 +103,6 @@ public class MetApiService {
 		item.setObjectEndDate((Integer) apiResponseMap.get("objectEndDate"));
 		item.setMedium((String) apiResponseMap.get("medium"));
 		item.setDimensions((String) apiResponseMap.get("dimensions"));
-		//item.setDimensionsParsed((Float) apiResponseMap.get("dimensionsParsed"));
 		item.setMeasurements((ArrayList<String>) apiResponseMap.get("measurements"));
 		item.setCreditLine((String) apiResponseMap.get("creditLine"));
 		item.setGeographyType((String) apiResponseMap.get("geographyType"));
