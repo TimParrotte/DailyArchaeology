@@ -2,13 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Daily Archaeology</title>
+		<style>
+			.main-column {
+				font-family: Helvetica, sans-serif;
+				text-align: left;
+				display: inline-block;
+				width: 50%;
+			}
+		</style>
 	</head>
 	<body>
-		<img th:src="${item.primaryImageSmall}">
-        <h3 th:text="'Object Name: ' + ${item.objectName}" />
-	    <h3 th:text="'Title: ' + ${item.title}" />
-		<h3 th:text="'Culture: ' + ${item.culture}" />
-	    <h3 th:text="'Date: ' + ${item.objectDate}" /> 
-		<h3 th:text="'Medium: ' + ${item.medium}" />
+		<div class="container">
+			<div class="main-column">
+				<h1>Refresh the page to see another random ancient artifact from the collection of the Metropolitan Museum of Art!</h1>
+				<img th:src="${item.primaryImageSmall}" class="artifact">
+	        	<h3 th:text="'Object Name: ' + ${item.objectName}" />
+		    	<h3 th:text="'Title: ' + ${item.title}" />
+				<h3 th:text="'Culture: ' + ${item.culture}" />
+		    	<h3 th:text="'Date: ' + ${item.objectDate}" /> 
+				<h3 th:text="'Medium: ' + ${item.medium}" />
+				<p>All content is provided by The Metropolitan Museum of Art Open Access API. All content is in the public domain.</p>
+			</div>
+		</div>
 	</body>
 </html>
