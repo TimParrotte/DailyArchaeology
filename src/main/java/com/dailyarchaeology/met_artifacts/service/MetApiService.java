@@ -29,46 +29,18 @@ public class MetApiService {
 
     private static final HttpClient httpClient = HttpClient.newHttpClient();
     
-    public static String getItemUrl(Integer itemNumber) {
+    public static String constructApiRequestForDepartment(Integer departmentNumber) {
+    	return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + departmentNumber;
+    }
+    
+    public static String constructApiRequestForItem(Integer itemNumber) {
         return baseMetApiUrl + metApiUrlObjectEndpoint + "/" + itemNumber;
     }
-
-    public static String getAncientNearEastArtUrl() {
-        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + ancientNearEastDepartmentNumber;
-    }
-
-    public static String getEgyptianArtUrl() {
-        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + egyptianArtDepartmentNumber;
-    }
-
-    public static String getGreekAndRomanArtUrl() {
-        return baseMetApiUrl + metApiUrlObjectEndpoint + searchByDepartmentUrl + greekAndRomanArtDepartmentNumber;
-    }
     
-    public ArrayList<Integer> getAncientOldWorldObjectIds() throws JsonProcessingException, IOException, InterruptedException {
-    	ArrayList<Integer> objectIds = new ArrayList<>();
-    	SearchResult nearEastResult = convertApiResponseToSearchResult(getApiResponseAsString(getAncientNearEastArtUrl()));
-    	SearchResult egyptianResult = convertApiResponseToSearchResult(getApiResponseAsString(getEgyptianArtUrl()));
-    	SearchResult grecoRomanResult = convertApiResponseToSearchResult(getApiResponseAsString(getGreekAndRomanArtUrl()));
-    	objectIds.addAll(nearEastResult.getObjectIDs());
-    	objectIds.addAll(egyptianResult.getObjectIDs());
-    	objectIds.addAll(grecoRomanResult.getObjectIDs());
-    	return objectIds;
-    }
-    
-	public static String getApiResponseAsString(String apiRequest) throws IOException, InterruptedException {
-	   URI uri = URI.create(apiRequest);
-	   HttpRequest request = HttpRequest.newBuilder()
-			   .GET().uri(uri).build();
-			  
-	   HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-	   return response.body();
-   }
-
-	public Item convertApiResponseToItem(String apiResponse) {
+	public Item convertJsonToItem(String apiResponseJson) {
 		Item item = new Item();
 		JsonParser parser = JsonParserFactory.getJsonParser();
-		Map<String, Object> apiResponseMap = parser.parseMap(apiResponse);
+		Map<String, Object> apiResponseMap = parser.parseMap(apiResponseJson);
 		item.setObjectId((int) apiResponseMap.get("objectID"));
 		item.setIsHighlight((Boolean) apiResponseMap.get("isHighlight"));
 		item.setAccessionNumber((String) apiResponseMap.get("accessionNumber"));
@@ -128,32 +100,45 @@ public class MetApiService {
 		item.setGalleryNumber((String) apiResponseMap.get("GalleryNumber"));
 		return item;
 	}
-	
     
-	public SearchResult convertApiResponseToSearchResult(String apiResponse) throws JsonProcessingException {
+	public SearchResult convertJsonToSearchResult(String apiResponseJson) throws JsonProcessingException {
 		SearchResult searchResult = new SearchResult();
 		JsonParser parser = JsonParserFactory.getJsonParser();
-		Map<String, Object> apiResponseMap = parser.parseMap(apiResponse);
+		Map<String, Object> apiResponseMap = parser.parseMap(apiResponseJson);
 		searchResult.setTotal((int) apiResponseMap.get("total"));
 		searchResult.setObjectIDs((ArrayList<Integer>) apiResponseMap.get("objectIDs"));
 		return searchResult;
 	}
 	
+	public ArrayList<Integer> getAncientOldWorldObjectIds() throws JsonProcessingException, IOException, InterruptedException {
+    	ArrayList<Integer> objectIds = new ArrayList<>();
+    	SearchResult nearEastResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(ancientNearEastDepartmentNumber)));
+    	SearchResult egyptianResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(egyptianArtDepartmentNumber)));
+    	SearchResult grecoRomanResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(greekAndRomanArtDepartmentNumber)));
+    	objectIds.addAll(nearEastResult.getObjectIDs());
+    	objectIds.addAll(egyptianResult.getObjectIDs());
+    	objectIds.addAll(grecoRomanResult.getObjectIDs());
+    	return objectIds;
+    }
+    
+	public static String getApiResponseAsJson(String apiRequest) throws IOException, InterruptedException {
+	   URI uri = URI.create(apiRequest);
+	   HttpRequest request = HttpRequest.newBuilder() .GET().uri(uri).build();
+	   HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+	   return response.body();
+   }
+
+	public Item getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
+		String url = constructApiRequestForItem(getRandomItemId(getAncientOldWorldObjectIds()));
+		String apiResponse = getApiResponseAsJson(url);
+		return convertJsonToItem(apiResponse);
+	}
+
 	public Integer getRandomItemId(ArrayList<Integer> objectIds) throws IOException {
 		if (objectIds.size() > 0) {
 			Collections.shuffle(objectIds);
 			return objectIds.get(0);
 		}
 		throw new IOException();
-	}
-	
-	public String getUrlOfSelectedItem() throws JsonProcessingException, IOException, InterruptedException {
-		return getItemUrl(getRandomItemId(getAncientOldWorldObjectIds()));
-	}
-	
-	public Item getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
-		String url = getUrlOfSelectedItem();
-		String apiResponse = getApiResponseAsString(url);
-		return convertApiResponseToItem(apiResponse);
 	}
 }

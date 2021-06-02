@@ -12,7 +12,7 @@ public class Item {
     private String primaryImage;
     private String primaryImageSmall;
     private ArrayList<String> additionalImages;
-    private ArrayList<String> constituents;	// TODO: Make constituents it's own class.
+    private ArrayList<String> constituents;
     private String department;
     private String objectName;
     private String title;

@@ -13,7 +13,6 @@ public class SearchResult {
     }
 
 	public SearchResult() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getTotal() {

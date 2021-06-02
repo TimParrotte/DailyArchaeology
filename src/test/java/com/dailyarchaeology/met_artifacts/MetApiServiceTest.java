@@ -38,7 +38,7 @@ public class MetApiServiceTest {
 		String expectedResult = "{\"objectID\":1,\"isHighlight\":false,\"accessionNumber\":\"1979.486.1\"";
 		
 		// WHEN
-		String result = metApiService.getApiResponseAsString(itemUrl);
+		String result = metApiService.getApiResponseAsJson(itemUrl);
 		
 		// THEN
 		Assertions.assertThat(result).contains(expectedResult);
@@ -50,8 +50,8 @@ public class MetApiServiceTest {
 		String searchResultUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=departmentId=3";
 		
 		// WHEN
-		String apiResponse = metApiService.getApiResponseAsString(searchResultUrl);
-		SearchResult searchResult = metApiService.convertApiResponseToSearchResult(apiResponse);
+		String apiResponse = MetApiService.getApiResponseAsJson(searchResultUrl);
+		SearchResult searchResult = metApiService.convertJsonToSearchResult(apiResponse);
 				
 		// THEN
 		Assertions.assertThat(searchResult).isNotNull();
@@ -151,7 +151,7 @@ public class MetApiServiceTest {
 				+ "}";
 		
 		// WHEN
-		Item item = metApiService.convertApiResponseToItem(jsonString);
+		Item item = metApiService.convertJsonToItem(jsonString);
 		
 		// THEN
 		Assertions.assertThat(item).isNotNull();
@@ -228,9 +228,9 @@ public class MetApiServiceTest {
 
 		
 		for (Integer testObjectId : testObjectIds) {
-			String url = MetApiService.getItemUrl(testObjectId);
-			String response = MetApiService.getApiResponseAsString(url);
-			Item item = metApiService.convertApiResponseToItem(response);
+			String url = MetApiService.constructApiRequestForItem(testObjectId);
+			String response = MetApiService.getApiResponseAsJson(url);
+			Item item = metApiService.convertJsonToItem(response);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isIn(departmentIds);
 		}
@@ -239,7 +239,8 @@ public class MetApiServiceTest {
 	@Test
 	public void assertOnlyAncientNearEastArtifacts() throws JsonProcessingException, IOException, InterruptedException {
 		// GIVEN
-    	SearchResult nearEastResult = metApiService.convertApiResponseToSearchResult(MetApiService.getApiResponseAsString(MetApiService.getAncientNearEastArtUrl()));
+		Integer nearEastDeptNum = 3;
+    	SearchResult nearEastResult = metApiService.convertJsonToSearchResult(MetApiService.getApiResponseAsJson(MetApiService.constructApiRequestForDepartment(nearEastDeptNum)));
     	List<Integer> objectIds = nearEastResult.getObjectIDs();
     	
 		// WHEN
@@ -248,9 +249,9 @@ public class MetApiServiceTest {
     		
 		// THEN
     	for (Integer testObjectId : testObjectIds) {
-			String url = MetApiService.getItemUrl(testObjectId);
-			String response = MetApiService.getApiResponseAsString(url);
-			Item item = metApiService.convertApiResponseToItem(response);
+			String url = MetApiService.constructApiRequestForItem(testObjectId);
+			String response = MetApiService.getApiResponseAsJson(url);
+			Item item = metApiService.convertJsonToItem(response);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isEqualTo("Ancient Near Eastern Art");
     	}
@@ -259,7 +260,7 @@ public class MetApiServiceTest {
 	@Test
 	public void assertThatGetObjectForDisplayReturnsAValidApiRequest() throws JsonProcessingException, IOException, InterruptedException {
 		// WHEN
-		String apiRequest = metApiService.getUrlOfSelectedItem();
+		String apiRequest = MetApiService.constructApiRequestForItem(metApiService.getRandomItemId(metApiService.getAncientOldWorldObjectIds()));
 		Integer itemNumber = Integer.parseInt(apiRequest.substring(65));
 		
 		// THEN
