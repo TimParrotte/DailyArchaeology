@@ -1,4 +1,4 @@
-package com.dailyarchaeology.met_artifacts;
+package com.dailyarchaeology.museum_artifacts;
 
 import java.util.Map;
 

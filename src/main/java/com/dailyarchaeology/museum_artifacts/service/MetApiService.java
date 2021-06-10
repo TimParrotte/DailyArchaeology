@@ -1,4 +1,4 @@
-package com.dailyarchaeology.met_artifacts.service;
+package com.dailyarchaeology.museum_artifacts.service;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,8 +13,8 @@ import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
-import com.dailyarchaeology.met_artifacts.domain.Item;
-import com.dailyarchaeology.met_artifacts.domain.SearchResult;
+import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.domain.SearchResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Service

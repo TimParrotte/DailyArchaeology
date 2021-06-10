@@ -1,4 +1,4 @@
-package com.dailyarchaeology.met_artifacts.controller;
+package com.dailyarchaeology.museum_artifacts.controller;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.dailyarchaeology.met_artifacts.domain.Item;
-import com.dailyarchaeology.met_artifacts.service.MetApiService;
+import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.service.MetApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Controller
