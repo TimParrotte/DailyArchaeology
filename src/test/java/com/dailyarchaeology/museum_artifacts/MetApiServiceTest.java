@@ -1,4 +1,4 @@
-package com.dailyarchaeology.met_artifacts;
+package com.dailyarchaeology.museum_artifacts;
 
 
 import java.io.IOException;
@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.dailyarchaeology.met_artifacts.service.MetApiService;
+import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.domain.SearchResult;
+import com.dailyarchaeology.museum_artifacts.service.MetApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.dailyarchaeology.met_artifacts.domain.Item;
-import com.dailyarchaeology.met_artifacts.domain.SearchResult;
 
 
 @ExtendWith(SpringExtension.class)

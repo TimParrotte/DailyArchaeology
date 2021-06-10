@@ -1,4 +1,4 @@
-package com.dailyarchaeology.met_artifacts.domain;
+package com.dailyarchaeology.museum_artifacts.domain;
 
 import java.util.ArrayList;
 import java.util.Objects;
