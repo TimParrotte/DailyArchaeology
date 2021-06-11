@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.domain.MetItem;
 import com.dailyarchaeology.museum_artifacts.domain.SearchResult;
 import com.dailyarchaeology.museum_artifacts.service.MetApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -151,7 +151,7 @@ public class MetApiServiceTest {
 				+ "}";
 		
 		// WHEN
-		Item item = metApiService.convertJsonToItem(jsonString);
+		MetItem item = metApiService.convertJsonToItem(jsonString);
 		
 		// THEN
 		Assertions.assertThat(item).isNotNull();
@@ -230,7 +230,7 @@ public class MetApiServiceTest {
 		for (Integer testObjectId : testObjectIds) {
 			String url = MetApiService.constructApiRequestForItem(testObjectId);
 			String response = MetApiService.getApiResponseAsJson(url);
-			Item item = metApiService.convertJsonToItem(response);
+			MetItem item = metApiService.convertJsonToItem(response);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isIn(departmentIds);
 		}
@@ -251,7 +251,7 @@ public class MetApiServiceTest {
     	for (Integer testObjectId : testObjectIds) {
 			String url = MetApiService.constructApiRequestForItem(testObjectId);
 			String response = MetApiService.getApiResponseAsJson(url);
-			Item item = metApiService.convertJsonToItem(response);
+			MetItem item = metApiService.convertJsonToItem(response);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isEqualTo("Ancient Near Eastern Art");
     	}

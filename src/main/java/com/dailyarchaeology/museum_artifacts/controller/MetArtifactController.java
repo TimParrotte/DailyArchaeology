@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.domain.MetItem;
 import com.dailyarchaeology.museum_artifacts.service.MetApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -19,7 +19,7 @@ public class MetArtifactController {
 	
 	@GetMapping({"/", "/item"})
 	public String index(Model model) throws JsonProcessingException, IOException, InterruptedException {
-		Item item = metApiService.getItemForDisplay();
+		MetItem item = metApiService.getItemForDisplay();
 		model.addAttribute(item);
 		return "itemTemplate";
 	}

@@ -13,7 +13,7 @@ import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
-import com.dailyarchaeology.museum_artifacts.domain.Item;
+import com.dailyarchaeology.museum_artifacts.domain.MetItem;
 import com.dailyarchaeology.museum_artifacts.domain.SearchResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -37,8 +37,8 @@ public class MetApiService {
         return baseMetApiUrl + metApiUrlObjectEndpoint + "/" + itemNumber;
     }
     
-	public Item convertJsonToItem(String apiResponseJson) {
-		Item item = new Item();
+	public MetItem convertJsonToItem(String apiResponseJson) {
+		MetItem item = new MetItem();
 		JsonParser parser = JsonParserFactory.getJsonParser();
 		Map<String, Object> apiResponseMap = parser.parseMap(apiResponseJson);
 		item.setObjectId((int) apiResponseMap.get("objectID"));
@@ -128,7 +128,7 @@ public class MetApiService {
 	   return response.body();
    }
 
-	public Item getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
+	public MetItem getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
 		String url = constructApiRequestForItem(getRandomItemId(getAncientOldWorldObjectIds()));
 		String apiResponse = getApiResponseAsJson(url);
 		return convertJsonToItem(apiResponse);

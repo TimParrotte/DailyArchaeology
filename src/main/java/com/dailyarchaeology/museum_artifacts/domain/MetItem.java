@@ -3,7 +3,7 @@ package com.dailyarchaeology.museum_artifacts.domain;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Item {
+public class MetItem {
     private Integer objectId;
     private Boolean isHighlight;
     private String accessionNumber;
@@ -531,7 +531,7 @@ public class Item {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
+        MetItem item = (MetItem) o;
         return getObjectId() == item.getObjectId();
     }
 
