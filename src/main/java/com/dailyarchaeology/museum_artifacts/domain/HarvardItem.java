@@ -4,91 +4,91 @@ import java.util.List;
 
 public class HarvardItem {
 	
-	private String accessionmethod;
-	private Integer accessionyear;
-	private Integer accesslevel; // Maybe an ENUM of (0,1).
+	private String accessionMethod;
+	private Integer accessionYear;
+	private Integer accessLevel; // Maybe an ENUM of (0,1).
 	private String century;
 	private String classification;
-	private Integer classificationid;
+	private Integer classificationId;
 	private String colors;  // ?? Not see below?
-	private Integer colorcount;
+	private Integer colorCount;
 	private String commentary;
 	private String contact;
-	private Integer contextualtextcount;
+	private Integer contextualTextCount;
 	private String copyright;
-	private String creditline;
+	private String creditLine;
 	private String culture;
 	private String dated;
-	private Integer datebegin;
-	private Integer dateend;
-	private String dateoffirepageview;
-	private String dateoflastpageview;
+	private Integer dateBegin;
+	private Integer dateEnd;
+	private String dateOfFirstPageView;
+	private String dateOfLastPageView;
 	private String department;
 	private String description;
 	private String dimensions;
 	private String division;
 	private String edition;
-	private Integer exhibitioncount;
-	private Integer groupcount;
+	private Integer exhibitionCount;
+	private Integer groupCount;
 	private Integer id;
-	private Integer imagecount;
-	private Integer imagepermissionlevel; // ENUM (0, 1, 2)
+	private Integer imageCount;
+	private Integer imagePermissionLevel; // ENUM (0, 1, 2)
 	private List<HarvardImage> images;
-	private String labeltext;
-	private String lastupdate;
-	private Integer lendingpermissionlevel; // ENUM (0, 1, 2)
-	private Integer markscount;
+	private String labelText;
+	private String lastUpdate;
+	private Integer lendingPermissionLevel; // ENUM (0, 1, 2)
+	private Integer marksCount;
 	private String medium;
-	private Integer mediacount;
-	private Integer objectid;
-	private String objectnumber;
+	private Integer mediaCount;
+	private Integer objectId;
+	private String objectNumber;
 	private String period;
-	private String periodid;
-	private Integer peoplecount;
-	private String primaryimageurl;
+	private String periodId;
+	private Integer peopleCount;
+	private String primaryImageUrl;
 	private String provenance;
-	private Integer publicationcount;
+	private Integer publicationCount;
 	private Integer rank; //?? Not seen below?
-	private Integer relatedcount;
-	private List<String> seeAlso;
-	private String singed;
-	private String standardreferencenumber;
+	private Integer relatedCount;
+	private List<SeeAlso> seeAlso;
+	private String signed;
+	private String standardReferenceNumber;
 	private String state;
 	private String style;
 	private String technique;
-	private Integer techniqueid;
+	private Integer techniqueId;
 	private String title;
-	private Integer titlescount;
-	private Integer totalpageviews;
-	private Integer totaluniquepageviews;
+	private Integer titlesCount;
+	private Integer totalPageViews;
+	private Integer totalUniquePageViews;
 	private String url;
-	private String verificationlevel; // ENUM 0-4
-	private List<Worktype> worktypes;
+	private String verificationLevel; // ENUM 0-4
+	private List<WorkType> workTypes;
 	
 	public HarvardItem() {};
 	
-	public String getAccessionmethod() {
-		return accessionmethod;
+	public String getAccessionMethod() {
+		return accessionMethod;
 	}
 
-	public void setAccessionmethod(String accessionmethod) {
-		this.accessionmethod = accessionmethod;
+	public void setAccessionMethod(String accessionMethod) {
+		this.accessionMethod = accessionMethod;
 	}
 
-	public Integer getAccessionyear() {
-		return accessionyear;
+	public Integer getAccessionYear() {
+		return accessionYear;
 	}
 
-	public void setAccessionyear(Integer accessionyear) {
-		this.accessionyear = accessionyear;
+	public void setAccessionYear(Integer accessionYear) {
+		this.accessionYear = accessionYear;
 	}
 
-	public Integer getAccesslevel() {
-		return accesslevel;
+	public Integer getAccessLevel() {
+		return accessLevel;
 	}
 
-	public void setAccesslevel(Integer accesslevel) {
-		this.accesslevel = accesslevel;
+	public void setAccessLevel(Integer accessLevel) {
+		this.accessLevel = accessLevel;
 	}
 
 	public String getCentury() {
@@ -107,12 +107,12 @@ public class HarvardItem {
 		this.classification = classification;
 	}
 
-	public Integer getClassificationid() {
-		return classificationid;
+	public Integer getClassificationId() {
+		return classificationId;
 	}
 
-	public void setClassificationid(Integer classificationid) {
-		this.classificationid = classificationid;
+	public void setClassificationId(Integer classificationId) {
+		this.classificationId = classificationId;
 	}
 
 	public String getColors() {
@@ -123,12 +123,12 @@ public class HarvardItem {
 		this.colors = colors;
 	}
 
-	public Integer getColorcount() {
-		return colorcount;
+	public Integer getColorCount() {
+		return colorCount;
 	}
 
-	public void setColorcount(Integer colorcount) {
-		this.colorcount = colorcount;
+	public void setColorCount(Integer colorCount) {
+		this.colorCount = colorCount;
 	}
 
 	public String getCommentary() {
@@ -147,12 +147,12 @@ public class HarvardItem {
 		this.contact = contact;
 	}
 
-	public Integer getContextualtextcount() {
-		return contextualtextcount;
+	public Integer getContextualTextCount() {
+		return contextualTextCount;
 	}
 
-	public void setContextualtextcount(Integer contextualtextcount) {
-		this.contextualtextcount = contextualtextcount;
+	public void setContextualTextCount(Integer contextualTextCount) {
+		this.contextualTextCount = contextualTextCount;
 	}
 
 	public String getCopyright() {
@@ -163,12 +163,12 @@ public class HarvardItem {
 		this.copyright = copyright;
 	}
 
-	public String getCreditline() {
-		return creditline;
+	public String getCreditLine() {
+		return creditLine;
 	}
 
-	public void setCreditline(String creditline) {
-		this.creditline = creditline;
+	public void setCreditLine(String creditLine) {
+		this.creditLine = creditLine;
 	}
 
 	public String getCulture() {
@@ -187,36 +187,36 @@ public class HarvardItem {
 		this.dated = dated;
 	}
 
-	public Integer getDatebegin() {
-		return datebegin;
+	public Integer getDateBegin() {
+		return dateBegin;
 	}
 
-	public void setDatebegin(Integer datebegin) {
-		this.datebegin = datebegin;
+	public void setDateBegin(Integer dateBegin) {
+		this.dateBegin = dateBegin;
 	}
 
-	public Integer getDateend() {
-		return dateend;
+	public Integer getDateEnd() {
+		return dateEnd;
 	}
 
-	public void setDateend(Integer dateend) {
-		this.dateend = dateend;
+	public void setDateEnd(Integer dateEnd) {
+		this.dateEnd = dateEnd;
 	}
 
-	public String getDateoffirepageview() {
-		return dateoffirepageview;
+	public String getDateOfFirstPageView() {
+		return dateOfFirstPageView;
 	}
 
-	public void setDateoffirepageview(String dateoffirepageview) {
-		this.dateoffirepageview = dateoffirepageview;
+	public void setDateOfFirstPageView(String dateOfFirstPageView) {
+		this.dateOfFirstPageView = dateOfFirstPageView;
 	}
 
-	public String getDateoflastpageview() {
-		return dateoflastpageview;
+	public String getDateOfLastPageView() {
+		return dateOfLastPageView;
 	}
 
-	public void setDateoflastpageview(String dateoflastpageview) {
-		this.dateoflastpageview = dateoflastpageview;
+	public void setDateOfLastPageView(String dateOfLastPageView) {
+		this.dateOfLastPageView = dateOfLastPageView;
 	}
 
 	public String getDepartment() {
@@ -259,20 +259,20 @@ public class HarvardItem {
 		this.edition = edition;
 	}
 
-	public Integer getExhibitioncount() {
-		return exhibitioncount;
+	public Integer getExhibitionCount() {
+		return exhibitionCount;
 	}
 
-	public void setExhibitioncount(Integer exhibitioncount) {
-		this.exhibitioncount = exhibitioncount;
+	public void setExhibitionCount(Integer exhibitionCount) {
+		this.exhibitionCount = exhibitionCount;
 	}
 
-	public Integer getGroupcount() {
-		return groupcount;
+	public Integer getGroupCount() {
+		return groupCount;
 	}
 
-	public void setGroupcount(Integer groupcount) {
-		this.groupcount = groupcount;
+	public void setGroupCount(Integer groupCount) {
+		this.groupCount = groupCount;
 	}
 
 	public Integer getId() {
@@ -283,20 +283,20 @@ public class HarvardItem {
 		this.id = id;
 	}
 
-	public Integer getImagecount() {
-		return imagecount;
+	public Integer getImageCount() {
+		return imageCount;
 	}
 
-	public void setImagecount(Integer imagecount) {
-		this.imagecount = imagecount;
+	public void setImageCount(Integer imageCount) {
+		this.imageCount = imageCount;
 	}
 
-	public Integer getImagepermissionlevel() {
-		return imagepermissionlevel;
+	public Integer getImagePermissionLevel() {
+		return imagePermissionLevel;
 	}
 
-	public void setImagepermissionlevel(Integer imagepermissionlevel) {
-		this.imagepermissionlevel = imagepermissionlevel;
+	public void setImagePermissionLevel(Integer imagePermissionLevel) {
+		this.imagePermissionLevel = imagePermissionLevel;
 	}
 
 	public List<HarvardImage> getImages() {
@@ -307,36 +307,36 @@ public class HarvardItem {
 		this.images = images;
 	}
 
-	public String getLabeltext() {
-		return labeltext;
+	public String getLabelText() {
+		return labelText;
 	}
 
-	public void setLabeltext(String labeltext) {
-		this.labeltext = labeltext;
+	public void setLabelText(String labelText) {
+		this.labelText = labelText;
 	}
 
-	public String getLastupdate() {
-		return lastupdate;
+	public String getLastUpdate() {
+		return lastUpdate;
 	}
 
-	public void setLastupdate(String lastupdate) {
-		this.lastupdate = lastupdate;
+	public void setLastUpdate(String lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
-	public Integer getLendingpermissionlevel() {
-		return lendingpermissionlevel;
+	public Integer getLendingPermissionLevel() {
+		return lendingPermissionLevel;
 	}
 
-	public void setLendingpermissionlevel(Integer lendingpermissionlevel) {
-		this.lendingpermissionlevel = lendingpermissionlevel;
+	public void setLendingPermissionLevel(Integer lendingPermissionLevel) {
+		this.lendingPermissionLevel = lendingPermissionLevel;
 	}
 
-	public Integer getMarkscount() {
-		return markscount;
+	public Integer getMarksCount() {
+		return marksCount;
 	}
 
-	public void setMarkscount(Integer markscount) {
-		this.markscount = markscount;
+	public void setMarksCount(Integer marksCount) {
+		this.marksCount = marksCount;
 	}
 
 	public String getMedium() {
@@ -347,28 +347,28 @@ public class HarvardItem {
 		this.medium = medium;
 	}
 
-	public Integer getMediacount() {
-		return mediacount;
+	public Integer getMediaCount() {
+		return mediaCount;
 	}
 
-	public void setMediacount(Integer mediacount) {
-		this.mediacount = mediacount;
+	public void setMediaCount(Integer mediaCount) {
+		this.mediaCount = mediaCount;
 	}
 
-	public Integer getObjectid() {
-		return objectid;
+	public Integer getObjectId() {
+		return objectId;
 	}
 
-	public void setObjectid(Integer objectid) {
-		this.objectid = objectid;
+	public void setObjectId(Integer objectId) {
+		this.objectId = objectId;
 	}
 
-	public String getObjectnumber() {
-		return objectnumber;
+	public String getObjectNumber() {
+		return objectNumber;
 	}
 
-	public void setObjectnumber(String objectnumber) {
-		this.objectnumber = objectnumber;
+	public void setObjectNumber(String objectNumber) {
+		this.objectNumber = objectNumber;
 	}
 
 	public String getPeriod() {
@@ -379,28 +379,28 @@ public class HarvardItem {
 		this.period = period;
 	}
 
-	public String getPeriodid() {
-		return periodid;
+	public String getPeriodId() {
+		return periodId;
 	}
 
-	public void setPeriodid(String periodid) {
-		this.periodid = periodid;
+	public void setPeriodId(String periodId) {
+		this.periodId = periodId;
 	}
 
-	public Integer getPeoplecount() {
-		return peoplecount;
+	public Integer getPeopleCount() {
+		return peopleCount;
 	}
 
-	public void setPeoplecount(Integer peoplecount) {
-		this.peoplecount = peoplecount;
+	public void setPeopleCount(Integer peopleCount) {
+		this.peopleCount = peopleCount;
 	}
 
-	public String getPrimaryimageurl() {
-		return primaryimageurl;
+	public String getPrimaryImageUrl() {
+		return primaryImageUrl;
 	}
 
-	public void setPrimaryimageurl(String primaryimageurl) {
-		this.primaryimageurl = primaryimageurl;
+	public void setPrimaryImageUrl(String primaryImageUrl) {
+		this.primaryImageUrl = primaryImageUrl;
 	}
 
 	public String getProvenance() {
@@ -411,12 +411,12 @@ public class HarvardItem {
 		this.provenance = provenance;
 	}
 
-	public Integer getPublicationcount() {
-		return publicationcount;
+	public Integer getPublicationCount() {
+		return publicationCount;
 	}
 
-	public void setPublicationcount(Integer publicationcount) {
-		this.publicationcount = publicationcount;
+	public void setPublicationCount(Integer publicationCount) {
+		this.publicationCount = publicationCount;
 	}
 
 	public Integer getRank() {
@@ -427,36 +427,36 @@ public class HarvardItem {
 		this.rank = rank;
 	}
 
-	public Integer getRelatedcount() {
-		return relatedcount;
+	public Integer getRelatedCount() {
+		return relatedCount;
 	}
 
-	public void setRelatedcount(Integer relatedcount) {
-		this.relatedcount = relatedcount;
+	public void setRelatedCount(Integer relatedCount) {
+		this.relatedCount = relatedCount;
 	}
 
-	public List<String> getSeeAlso() {
+	public List<SeeAlso> getSeeAlso() {
 		return seeAlso;
 	}
 
-	public void setSeeAlso(List<String> seeAlso) {
+	public void setSeeAlso(List<SeeAlso> seeAlso) {
 		this.seeAlso = seeAlso;
 	}
 
-	public String getSinged() {
-		return singed;
+	public String getSigned() {
+		return signed;
 	}
 
-	public void setSinged(String singed) {
-		this.singed = singed;
+	public void setSigned(String signed) {
+		this.signed = signed;
 	}
 
-	public String getStandardreferencenumber() {
-		return standardreferencenumber;
+	public String getStandardReferenceNumber() {
+		return standardReferenceNumber;
 	}
 
-	public void setStandardreferencenumber(String standardreferencenumber) {
-		this.standardreferencenumber = standardreferencenumber;
+	public void setStandardReferenceNumber(String standardReferenceNumber) {
+		this.standardReferenceNumber = standardReferenceNumber;
 	}
 
 	public String getState() {
@@ -483,12 +483,12 @@ public class HarvardItem {
 		this.technique = technique;
 	}
 
-	public Integer getTechniqueid() {
-		return techniqueid;
+	public Integer getTechniqueId() {
+		return techniqueId;
 	}
 
-	public void setTechniqueid(Integer techniqueid) {
-		this.techniqueid = techniqueid;
+	public void setTechniqueId(Integer techniqueId) {
+		this.techniqueId = techniqueId;
 	}
 
 	public String getTitle() {
@@ -499,28 +499,28 @@ public class HarvardItem {
 		this.title = title;
 	}
 
-	public Integer getTitlescount() {
-		return titlescount;
+	public Integer getTitlesCount() {
+		return titlesCount;
 	}
 
-	public void setTitlescount(Integer titlescount) {
-		this.titlescount = titlescount;
+	public void setTitlesCount(Integer titlesCount) {
+		this.titlesCount = titlesCount;
 	}
 
-	public Integer getTotalpageviews() {
-		return totalpageviews;
+	public Integer getTotalPageViews() {
+		return totalPageViews;
 	}
 
-	public void setTotalpageviews(Integer totalpageviews) {
-		this.totalpageviews = totalpageviews;
+	public void setTotalPageViews(Integer totalPageViews) {
+		this.totalPageViews = totalPageViews;
 	}
 
-	public Integer getTotaluniquepageviews() {
-		return totaluniquepageviews;
+	public Integer getTotalUniquePageViews() {
+		return totalUniquePageViews;
 	}
 
-	public void setTotaluniquepageviews(Integer totaluniquepageviews) {
-		this.totaluniquepageviews = totaluniquepageviews;
+	public void setTotalUniquePageViews(Integer totalUniquePageViews) {
+		this.totalUniquePageViews = totalUniquePageViews;
 	}
 
 	public String getUrl() {
@@ -531,50 +531,52 @@ public class HarvardItem {
 		this.url = url;
 	}
 
-	public String getVerificationlevel() {
-		return verificationlevel;
+	public String getVerificationLevel() {
+		return verificationLevel;
 	}
 
-	public void setVerificationlevel(String verificationlevel) {
-		this.verificationlevel = verificationlevel;
+	public void setVerificationLevel(String verificationLevel) {
+		this.verificationLevel = verificationLevel;
 	}
 
-	public List<Worktype> getWorktypes() {
-		return worktypes;
+	public List<WorkType> getWorkTypes() {
+		return workTypes;
 	}
 
-	public void setWorktypes(List<Worktype> worktypes) {
-		this.worktypes = worktypes;
+	public void setWorkTypes(List<WorkType> workTypes) {
+		this.workTypes = workTypes;
 	}
 
-	private class HarvardImage {
-		private String alttext;
-		private String baseimageurl;
+
+
+	public class HarvardImage {
+		private String altText;
+		private String baseImageUrl;
 		private String description;
-		private Integer displayorder;
+		private Integer displayOrder;
 		private String format;
 		private Integer height;
-		private Integer idsid;
-		private String iiifbaseuri;
-		private Integer imageid;
-		private String renditionnumber;
+		private Integer idsId;
+		private String iiifBaseUri;
+		private Integer imageId;
+		private String renditionNumber;
 		private String date;
 		private String technique;
 		private Integer width;
 		
 		public HarvardImage() {};
 		
-		public String getAlttext() {
-			return alttext;
+		public String getAltText() {
+			return altText;
 		}
-		public void setAlttext(String alttext) {
-			this.alttext = alttext;
+		public void setAltText(String altText) {
+			this.altText = altText;
 		}
-		public String getBaseimageurl() {
-			return baseimageurl;
+		public String getBaseImageUrl() {
+			return baseImageUrl;
 		}
-		public void setBaseimageurl(String baseimageurl) {
-			this.baseimageurl = baseimageurl;
+		public void setBaseImageUrl(String baseImageUrl) {
+			this.baseImageUrl = baseImageUrl;
 		}
 		public String getDescription() {
 			return description;
@@ -582,11 +584,11 @@ public class HarvardItem {
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		public Integer getDisplayorder() {
-			return displayorder;
+		public Integer getDisplayOrder() {
+			return displayOrder;
 		}
-		public void setDisplayorder(Integer displayorder) {
-			this.displayorder = displayorder;
+		public void setDisplayOrder(Integer displayOrder) {
+			this.displayOrder = displayOrder;
 		}
 		public String getFormat() {
 			return format;
@@ -600,29 +602,29 @@ public class HarvardItem {
 		public void setHeight(Integer height) {
 			this.height = height;
 		}
-		public Integer getIdsid() {
-			return idsid;
+		public Integer getIdsId() {
+			return idsId;
 		}
-		public void setIdsid(Integer idsid) {
-			this.idsid = idsid;
+		public void setIdsId(Integer idsId) {
+			this.idsId = idsId;
 		}
-		public String getIiifbaseuri() {
-			return iiifbaseuri;
+		public String getIiifBaseUri() {
+			return iiifBaseUri;
 		}
-		public void setIiifbaseuri(String iiifbaseuri) {
-			this.iiifbaseuri = iiifbaseuri;
+		public void setIiifBaseUri(String iiifBaseUri) {
+			this.iiifBaseUri = iiifBaseUri;
 		}
-		public Integer getImageid() {
-			return imageid;
+		public Integer getImageId() {
+			return imageId;
 		}
-		public void setImageid(Integer imageid) {
-			this.imageid = imageid;
+		public void setImageId(Integer imageId) {
+			this.imageId = imageId;
 		}
 		public String getRenditionnumber() {
-			return renditionnumber;
+			return renditionNumber;
 		}
-		public void setRenditionnumber(String renditionnumber) {
-			this.renditionnumber = renditionnumber;
+		public void setRenditionNumber(String renditionNumber) {
+			this.renditionNumber = renditionNumber;
 		}
 		public String getDate() {
 			return date;
@@ -644,18 +646,18 @@ public class HarvardItem {
 		}
 	}
 	
-	private class Worktype {
-		private String worktypeid;
+	public class WorkType {
+		private String workTypeId;
 		private String weight;
 		
-		public Worktype() {}
+		public WorkType() {}
 
-		public String getWorktypeid() {
-			return worktypeid;
+		public String getWorkTypeId() {
+			return workTypeId;
 		}
 
-		public void setWorktypeid(String worktypeid) {
-			this.worktypeid = worktypeid;
+		public void setWorkTypeId(String workTypeId) {
+			this.workTypeId = workTypeId;
 		}
 
 		public String getWeight() {
@@ -667,7 +669,7 @@ public class HarvardItem {
 		};
 	}
 
-	private class SeeAlso {
+	public class SeeAlso {
 		private String id;
 		private String type;
 		private String format;
