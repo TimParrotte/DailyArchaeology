@@ -1,6 +1,7 @@
 package com.dailyarchaeology.museum_artifacts.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class HarvardApiService extends MuseumApiCommon {
 		item.setDateOfLastPageView((String) apiResponseMap.get("dateoflastpageview"));
 		item.setDepartment((String) apiResponseMap.get("department"));
 		item.setDescription((String) apiResponseMap.get("description"));
-		item.setDimensions((String) apiResponseMap.get("dimension"));
+		item.setDimensions((String) apiResponseMap.get("dimensions"));
 		item.setDivision((String) apiResponseMap.get("division"));
 		item.setEdition((String) apiResponseMap.get("edition"));
 		item.setExhibitionCount((Integer) apiResponseMap.get("exhibitioncount"));
@@ -53,7 +54,8 @@ public class HarvardApiService extends MuseumApiCommon {
 		item.setId((Integer) apiResponseMap.get("id"));
 		item.setImageCount((Integer) apiResponseMap.get("imagecount"));
 		item.setImagePermissionLevel((Integer) apiResponseMap.get("imagepermissionlevel"));
-		item.setImages((List<HarvardImage>) apiResponseMap.get("images"));
+//		item.setImages((List<HarvardImage>) apiResponseMap.get("images"));
+		item.setImages((ArrayList<String>) apiResponseMap.get("images"));
 		item.setLabelText((String) apiResponseMap.get("labeltext"));
 		item.setLastUpdate((String) apiResponseMap.get("lastupdate"));
 		item.setLendingPermissionLevel((Integer) apiResponseMap.get("lendingpermissionlevel"));
@@ -63,14 +65,15 @@ public class HarvardApiService extends MuseumApiCommon {
 		item.setObjectId((Integer) apiResponseMap.get("objectid"));
 		item.setObjectNumber((String) apiResponseMap.get("objectnumber"));
 		item.setPeriod((String) apiResponseMap.get("period"));
-		item.setPeriodId((String) apiResponseMap.get("periodid"));
+		item.setPeriodId((Integer) apiResponseMap.get("periodid"));
 		item.setPeopleCount((Integer) apiResponseMap.get("peoplecount"));
 		item.setPrimaryImageUrl((String) apiResponseMap.get("primaryimageurl"));
 		item.setProvenance((String) apiResponseMap.get("provenance"));
 		item.setPublicationCount((Integer) apiResponseMap.get("publicationcount"));
 		item.setRank((Integer) apiResponseMap.get("rank"));
 		item.setRelatedCount((Integer) apiResponseMap.get("relatedcount"));
-		item.setSeeAlso((List<SeeAlso>) apiResponseMap.get("seeAlso"));
+//		item.setSeeAlso((List<SeeAlso>) apiResponseMap.get("seeAlso"));
+  		item.setSeeAlso((ArrayList<String>) apiResponseMap.get("seeAlso"));
 		item.setSigned((String) apiResponseMap.get("signed"));
 		item.setStandardReferenceNumber((String) apiResponseMap.get("standardreferencenumber"));
 		item.setState((String) apiResponseMap.get("state"));
@@ -84,7 +87,8 @@ public class HarvardApiService extends MuseumApiCommon {
 		item.setUrl((String) apiResponseMap.get("url"));
 		item.setVerificationLevel((Integer) apiResponseMap.get("verificationlevel"));
 		item.setVerificationLevelDescription((String) apiResponseMap.get("verificationleveldescription"));
-		item.setWorkTypes((List<WorkType>) apiResponseMap.get("worktypes"));
+//		item.setWorkTypes((List<WorkType>) apiResponseMap.get("worktypes"));
+		item.setWorkTypes((ArrayList<String>) apiResponseMap.get("worktypes"));
 		return item;
 	}
 

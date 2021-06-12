@@ -1,5 +1,6 @@
 package com.dailyarchaeology.museum_artifacts.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HarvardItem {
@@ -33,7 +34,8 @@ public class HarvardItem {
 	private Integer id;
 	private Integer imageCount;
 	private Integer imagePermissionLevel; // ENUM (0, 1, 2)
-	private List<HarvardImage> images;
+	//private List<HarvardImage> images;
+	private ArrayList<String> images;
 	private String labelText;
 	private String lastUpdate;
 	private Integer lendingPermissionLevel; // ENUM (0, 1, 2)
@@ -43,14 +45,15 @@ public class HarvardItem {
 	private Integer objectId;
 	private String objectNumber;
 	private String period;
-	private String periodId;
+	private Integer periodId;
 	private Integer peopleCount;
 	private String primaryImageUrl;
 	private String provenance;
 	private Integer publicationCount;
 	private Integer rank; //?? Not seen below?
 	private Integer relatedCount;
-	private List<SeeAlso> seeAlso;
+	//private List<SeeAlso> seeAlso;
+	private ArrayList<String> seeAlso;
 	private String signed;
 	private String standardReferenceNumber;
 	private String state;
@@ -64,8 +67,8 @@ public class HarvardItem {
 	private String url;
 	private Integer verificationLevel; // ENUM 0-4
 	private String verificationLevelDescription;
-	
-	private List<WorkType> workTypes;
+	//private List<WorkType> workTypes;
+	private ArrayList<String> workTypes;
 	
 	public HarvardItem() {};
 	
@@ -301,11 +304,19 @@ public class HarvardItem {
 		this.imagePermissionLevel = imagePermissionLevel;
 	}
 
-	public List<HarvardImage> getImages() {
+/*	public List<HarvardImage> getImages() {
 		return images;
 	}
 
 	public void setImages(List<HarvardImage> images) {
+		this.images = images;
+	}*/
+	
+	public ArrayList<String> getImages() {
+		return images;
+	}
+	
+	public void setImages(ArrayList<String> images) {
 		this.images = images;
 	}
 
@@ -381,11 +392,11 @@ public class HarvardItem {
 		this.period = period;
 	}
 
-	public String getPeriodId() {
+	public Integer getPeriodId() {
 		return periodId;
 	}
 
-	public void setPeriodId(String periodId) {
+	public void setPeriodId(Integer periodId) {
 		this.periodId = periodId;
 	}
 
@@ -437,11 +448,19 @@ public class HarvardItem {
 		this.relatedCount = relatedCount;
 	}
 
-	public List<SeeAlso> getSeeAlso() {
+/*	public List<SeeAlso> getSeeAlso() {
 		return seeAlso;
-	}
+	} 
 
 	public void setSeeAlso(List<SeeAlso> seeAlso) {
+		this.seeAlso = seeAlso;
+	}*/
+	
+	public ArrayList<String> getSeeAlso() {
+		return seeAlso;
+	}
+	
+	public void setSeeAlso(ArrayList<String> seeAlso) {
 		this.seeAlso = seeAlso;
 	}
 
@@ -549,14 +568,21 @@ public class HarvardItem {
 		this.verificationLevelDescription = verificationLevelDescription;
 	}
 
-	public List<WorkType> getWorkTypes() {
+/*	public List<WorkType> getWorkTypes() {
 		return workTypes;
 	}
 
 	public void setWorkTypes(List<WorkType> workTypes) {
 		this.workTypes = workTypes;
+	} */
+	
+	public ArrayList<String> getWorkTypes() {
+		return workTypes;
 	}
-
+	
+	public void setWorkTypes(ArrayList<String> workTypes) {
+		this.workTypes = workTypes;
+	}
 
 	public class HarvardImage {
 		private String altText;
