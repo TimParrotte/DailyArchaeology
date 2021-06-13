@@ -10,9 +10,8 @@ import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
 import com.dailyarchaeology.museum_artifacts.domain.HarvardItem;
-import com.dailyarchaeology.museum_artifacts.domain.HarvardItem.HarvardImage;
-import com.dailyarchaeology.museum_artifacts.domain.HarvardItem.SeeAlso;
-import com.dailyarchaeology.museum_artifacts.domain.HarvardItem.WorkType;
+import com.dailyarchaeology.museum_artifacts.domain.HarvardWorkType;
+import com.dailyarchaeology.museum_artifacts.domain.HarvardImage;
 
 
 @Service
@@ -91,5 +90,38 @@ public class HarvardApiService extends MuseumApiCommon {
 		item.setWorkTypes((ArrayList<String>) apiResponseMap.get("worktypes"));
 		return item;
 	}
+	
+	public HarvardImage convertJsonToHarvardImage(String jsonString) {
+		HarvardImage image = new HarvardImage();
+		JsonParser parser = JsonParserFactory.getJsonParser();
+		Map<String, Object> responseMap = parser.parseMap(jsonString);
+		image.setAltText((String) responseMap.get("altText"));
+		image.setBaseImageUrl((String) responseMap.get("baseimageurl"));
+		image.setCopyright((String) responseMap.get("copyright"));
+		image.setDate((String) responseMap.get("date"));
+		image.setDescription((String) responseMap.get("description"));
+		image.setDisplayOrder((Integer) responseMap.get("displayorder"));
+		image.setFormat((String) responseMap.get("format"));
+		image.setHeight((Integer) responseMap.get("height"));
+		image.setIdsId((Integer) responseMap.get("idsid"));
+		image.setIiifBaseUri((String) responseMap.get("iiifbaseuri"));
+		image.setImageId((Integer) responseMap.get("imageid"));
+		image.setPublicCaption((String) responseMap.get("publiccaption"));
+		image.setRenditionNumber((String) responseMap.get("renditionnumber"));
+		image.setTechnique((String) responseMap.get("technique"));
+		image.setWidth((Integer) responseMap.get("width"));
+		return image;
+	}
+	
+	public HarvardWorkType convertJsonToHarvardWorkType(String jsonString) {
+		HarvardWorkType workType = new HarvardWorkType();
+		JsonParser parser = JsonParserFactory.getJsonParser();
+		Map<String, Object> responseMap = parser.parseMap(jsonString);
+		workType.setWeight((String) responseMap.get("weight"));
+		workType.setWorkType((String) responseMap.get("worktype"));
+		workType.setWorkTypeId((String) responseMap.get("worktypeid"));
+		return workType;
+	}
+
 
 }
