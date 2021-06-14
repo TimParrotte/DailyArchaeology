@@ -1,5 +1,7 @@
 package com.dailyarchaeology.museum_artifacts;
 
+import java.io.IOException;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,6 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.dailyarchaeology.museum_artifacts.domain.HarvardItem;
 import com.dailyarchaeology.museum_artifacts.service.HarvardApiService;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -19,7 +23,7 @@ public class HarvardApiServiceTest {
 
 	
 	@Test
-	public void assertHarvardItemObjectSuccessFullyCreatedFromJson() {
+	public void assertHarvardItemObjectSuccessFullyCreatedFromJson() throws JsonParseException, JsonMappingException, IOException {
 		// GIVEN
 		
 		String jsonString ="{"
@@ -133,9 +137,8 @@ public class HarvardApiServiceTest {
 		Assertions.assertThat(item.getId()).isEqualTo(72476);
 		Assertions.assertThat(item.getVerificationLevelDescription()).isEqualTo("Unchecked. Object information has not been verified for completeness and has not been vetted");
 		Assertions.assertThat(item.getPeriod()).isEqualTo("Chalcolithic period");
-		Assertions.assertThat(item.getImages()).isNotEmpty();
-		Assertions.assertThat(item.getWorkTypes()).isNotEmpty();
-/*		Assertions.assertThat(item.getImages().get(0).getDate()).isEqualTo("2006-09-07");
+		Assertions.assertThat(item.getImages()).isNotNull();
+		Assertions.assertThat(item.getImages().get(0).getDate()).isEqualTo("2006-09-07");
 		Assertions.assertThat(item.getImages().get(0).getCopyright()).isEqualTo("President and Fellows of Harvard College");
 		Assertions.assertThat(item.getImages().get(0).getImageId()).isEqualTo(195840);
 		Assertions.assertThat(item.getImages().get(0).getIdsId()).isEqualTo(20231341);
@@ -149,8 +152,9 @@ public class HarvardApiServiceTest {
 		Assertions.assertThat(item.getImages().get(0).getPublicCaption()).isNull();
 		Assertions.assertThat(item.getImages().get(0).getIiifBaseUri()).isEqualTo("https://ids.lib.harvard.edu/ids/iiif/20231341");
 		Assertions.assertThat(item.getImages().get(0).getHeight()).isEqualTo(762);
+		Assertions.assertThat(item.getWorkTypes()).isNotNull();
 		Assertions.assertThat(item.getWorkTypes().get(0).getWorkTypeId()).isEqualTo("13");
-		Assertions.assertThat(item.getWorkTypes().get(0).getWorkType()).isEqualTo("amulet"); */
+		Assertions.assertThat(item.getWorkTypes().get(0).getWorkType()).isEqualTo("amulet");
 		Assertions.assertThat(item.getImageCount()).isEqualTo(1);
 		Assertions.assertThat(item.getTotalPageViews()).isEqualTo(71);
 		Assertions.assertThat(item.getAccessionYear()).isEqualTo(2003);
@@ -188,6 +192,10 @@ public class HarvardApiServiceTest {
 		Assertions.assertThat(item.getObjectId()).isEqualTo(72476);
 		Assertions.assertThat(item.getTechniqueId()).isNull();
 		Assertions.assertThat(item.getDimensions()).isEqualTo("4.8 x 5.4 x 0.7 cm (1 7/8 x 2 1/8 x 1/4 in.)");
-		Assertions.assertThat(item.getSeeAlso()).isNotEmpty();
+		Assertions.assertThat(item.getSeeAlso()).isNotNull();
+		Assertions.assertThat(item.getSeeAlso().get(0).getId()).isEqualTo("https://iiif.harvardartmuseums.org/manifests/object/72476");
+		Assertions.assertThat(item.getSeeAlso().get(0).getType()).isEqualTo("IIIF Manifest");
+		Assertions.assertThat(item.getSeeAlso().get(0).getFormat()).isEqualTo("application/json");
+		Assertions.assertThat(item.getSeeAlso().get(0).getProfile()).isEqualTo("http://iiif.io/api/presentation/2/context.json");
 	}
 }

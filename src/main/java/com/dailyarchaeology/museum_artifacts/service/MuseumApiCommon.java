@@ -6,6 +6,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 public abstract class MuseumApiCommon {
 	
 	public static String getApiResponseAsJson(String apiRequest, HttpClient httpClient) throws IOException, InterruptedException {
@@ -15,6 +18,6 @@ public abstract class MuseumApiCommon {
 		   return response.body();
 	   }
 
-	abstract public <T> Object convertJsonToItem(String apiReponseJson);
+	abstract public <T> Object convertJsonToItem(String apiReponseJson) throws JsonParseException, JsonMappingException, IOException;
 	
 }

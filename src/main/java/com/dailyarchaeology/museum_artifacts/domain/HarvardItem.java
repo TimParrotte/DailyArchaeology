@@ -1,6 +1,5 @@
 package com.dailyarchaeology.museum_artifacts.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HarvardItem {
@@ -11,11 +10,11 @@ public class HarvardItem {
 	private String century;
 	private String classification;
 	private Integer classificationId;
-	private String colors;  // ?? Not see below?
+	private String colors; 
 	private Integer colorCount;
 	private String commentary;
 	private String contact;
-	private Integer contextualTextCount;
+	private Integer contextualtextcount;
 	private String copyright;
 	private String creditLine;
 	private String culture;
@@ -34,8 +33,7 @@ public class HarvardItem {
 	private Integer id;
 	private Integer imageCount;
 	private Integer imagePermissionLevel; // ENUM (0, 1, 2)
-	//private List<HarvardImage> images;
-	private ArrayList<String> images;
+	private List<HarvardImage> images;
 	private String labelText;
 	private String lastUpdate;
 	private Integer lendingPermissionLevel; // ENUM (0, 1, 2)
@@ -50,10 +48,9 @@ public class HarvardItem {
 	private String primaryImageUrl;
 	private String provenance;
 	private Integer publicationCount;
-	private Integer rank; //?? Not seen below?
+	private Integer rank; 
 	private Integer relatedCount;
-	//private List<SeeAlso> seeAlso;
-	private ArrayList<String> seeAlso;
+	private List<HarvardSeeAlso> seeAlso;
 	private String signed;
 	private String standardReferenceNumber;
 	private String state;
@@ -67,8 +64,7 @@ public class HarvardItem {
 	private String url;
 	private Integer verificationLevel; // ENUM 0-4
 	private String verificationLevelDescription;
-	//private List<WorkType> workTypes;
-	private ArrayList<String> workTypes;
+	private List<HarvardWorkType> workTypes;
 	
 	public HarvardItem() {};
 	
@@ -153,11 +149,11 @@ public class HarvardItem {
 	}
 
 	public Integer getContextualTextCount() {
-		return contextualTextCount;
+		return contextualtextcount;
 	}
 
-	public void setContextualTextCount(Integer contextualTextCount) {
-		this.contextualTextCount = contextualTextCount;
+	public void setContextualTextCount(Integer contextualtextcount) {
+		this.contextualtextcount = contextualtextcount;
 	}
 
 	public String getCopyright() {
@@ -304,19 +300,11 @@ public class HarvardItem {
 		this.imagePermissionLevel = imagePermissionLevel;
 	}
 
-/*	public List<HarvardImage> getImages() {
+	public List<HarvardImage> getImages() {
 		return images;
 	}
 
 	public void setImages(List<HarvardImage> images) {
-		this.images = images;
-	}*/
-	
-	public ArrayList<String> getImages() {
-		return images;
-	}
-	
-	public void setImages(ArrayList<String> images) {
 		this.images = images;
 	}
 
@@ -448,22 +436,14 @@ public class HarvardItem {
 		this.relatedCount = relatedCount;
 	}
 
-/*	public List<SeeAlso> getSeeAlso() {
+	public List<HarvardSeeAlso> getSeeAlso() {
 		return seeAlso;
 	} 
 
-	public void setSeeAlso(List<SeeAlso> seeAlso) {
-		this.seeAlso = seeAlso;
-	}*/
-	
-	public ArrayList<String> getSeeAlso() {
-		return seeAlso;
-	}
-	
-	public void setSeeAlso(ArrayList<String> seeAlso) {
+	public void setSeeAlso(List<HarvardSeeAlso> seeAlso) {
 		this.seeAlso = seeAlso;
 	}
-
+	
 	public String getSigned() {
 		return signed;
 	}
@@ -568,19 +548,11 @@ public class HarvardItem {
 		this.verificationLevelDescription = verificationLevelDescription;
 	}
 
-/*	public List<WorkType> getWorkTypes() {
+	public List<HarvardWorkType> getWorkTypes() {
 		return workTypes;
 	}
 
-	public void setWorkTypes(List<WorkType> workTypes) {
+	public void setWorkTypes(List<HarvardWorkType> workTypes) {
 		this.workTypes = workTypes;
-	} */
-	
-	public ArrayList<String> getWorkTypes() {
-		return workTypes;
-	}
-	
-	public void setWorkTypes(ArrayList<String> workTypes) {
-		this.workTypes = workTypes;
-	}
+	} 
 }
