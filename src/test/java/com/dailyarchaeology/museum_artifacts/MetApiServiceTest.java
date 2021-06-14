@@ -18,9 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.dailyarchaeology.museum_artifacts.domain.MetItem;
-import com.dailyarchaeology.museum_artifacts.domain.SearchResult;
+import com.dailyarchaeology.museum_artifacts.domain.MetSearchResult;
 import com.dailyarchaeology.museum_artifacts.service.MetApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 
 @ExtendWith(SpringExtension.class)
@@ -54,7 +55,7 @@ public class MetApiServiceTest {
 		
 		// WHEN
 		String apiResponse = MetApiService.getApiResponseAsJson(searchResultUrl, httpClient);
-		SearchResult searchResult = metApiService.convertJsonToSearchResult(apiResponse);
+		MetSearchResult searchResult = metApiService.convertJsonToSearchResult(apiResponse);
 				
 		// THEN
 		Assertions.assertThat(searchResult).isNotNull();
@@ -83,8 +84,9 @@ public class MetApiServiceTest {
 		Assertions.assertThat(randomNums).isNotEqualTo(nums);
 	}
 	
+	//TODO: Add sub-class value assertions to this test
 	@Test
-	public void assertThatItemObjectSuccessfullyCreatedFromTheMetApi() {
+	public void assertThatItemObjectSuccessfullyCreatedFromTheMetApi() throws JsonMappingException, JsonProcessingException {
 		// GIVEN
 		String jsonString = "{"
 				+ "\"objectID\":768252,"
@@ -243,7 +245,7 @@ public class MetApiServiceTest {
 	public void assertOnlyAncientNearEastArtifacts() throws JsonProcessingException, IOException, InterruptedException {
 		// GIVEN
 		Integer nearEastDeptNum = 3;
-    	SearchResult nearEastResult = metApiService.convertJsonToSearchResult(MetApiService.getApiResponseAsJson(MetApiService.constructApiRequestForDepartment(nearEastDeptNum), httpClient));
+    	MetSearchResult nearEastResult = metApiService.convertJsonToSearchResult(MetApiService.getApiResponseAsJson(MetApiService.constructApiRequestForDepartment(nearEastDeptNum), httpClient));
     	List<Integer> objectIds = nearEastResult.getObjectIDs();
     	
 		// WHEN

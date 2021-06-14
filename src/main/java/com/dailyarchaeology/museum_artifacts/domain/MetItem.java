@@ -12,7 +12,7 @@ public class MetItem {
     private String primaryImage;
     private String primaryImageSmall;
     private ArrayList<String> additionalImages;
-    private ArrayList<String> constituents;
+    private ArrayList<MetConstituents> constituents;
     private String department;
     private String objectName;
     private String title;
@@ -39,7 +39,7 @@ public class MetItem {
     private String medium;
     private String dimensions;
     private Float dimensionsParsed;
-    private ArrayList<String> measurements;
+    private ArrayList<MetMeasurements> measurements;
     private String creditLine;
     private String geographyType;
     private String city;
@@ -58,7 +58,7 @@ public class MetItem {
     private String metadataDate;
     private String repository;
     private String objectURL;
-    private ArrayList<String> tags;
+    private ArrayList<MetTags> tags;
     private String objectWikidata_URL;
     private Boolean isTimelineWork;
     private String galleryNumber;
@@ -127,12 +127,12 @@ public class MetItem {
         this.additionalImages = additionalImages;
     }
 
-    public ArrayList<String> getConstituents() {
-        return constituents;
+    public ArrayList<MetConstituents> getConstituents() {
+    	return constituents;
     }
-
-    public void setConstituents(ArrayList<String> constituents) {
-        this.constituents = constituents;
+    
+    public void setConstituents(ArrayList<MetConstituents> constituents) {
+    	this.constituents = constituents;
     }
 
     public String getDepartment() {
@@ -343,12 +343,12 @@ public class MetItem {
         this.dimensionsParsed = dimensionsParsed;
     }
 
-    public ArrayList<String> getMeasurements() {
-        return measurements;
+    public ArrayList<MetMeasurements> getMeasurements() {
+    	return measurements;
     }
-
-    public void setMeasurements(ArrayList<String> measurements) {
-        this.measurements = measurements;
+    
+    public void setMeasurements(ArrayList<MetMeasurements> measurements) {
+    	this.measurements = measurements;
     }
 
     public String getCreditLine() {
@@ -495,12 +495,12 @@ public class MetItem {
         this.objectURL = objectURL;
     }
 
-    public ArrayList<String> getTags() {
-        return tags;
+    public ArrayList<MetTags> getTags() {
+    	return tags;
     }
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
+    
+    public void setTags(ArrayList<MetTags> tags) {
+    	this.tags = tags;
     }
 
     public String getObjectWikidata_URL() {
@@ -542,7 +542,7 @@ public class MetItem {
 
     @Override
 	public String toString() {
-		return "Item [objectId=" + objectId + ", isHighlight=" + isHighlight + ", accessionNumber=" + accessionNumber
+		return "MetItem [objectId=" + objectId + ", isHighlight=" + isHighlight + ", accessionNumber=" + accessionNumber
 				+ ", accessionYear=" + accessionYear + ", isPublicDomain=" + isPublicDomain + ", primaryImage="
 				+ primaryImage + ", primaryImageSmall=" + primaryImageSmall + ", additionalImages=" + additionalImages
 				+ ", constituents=" + constituents + ", department=" + department + ", objectName=" + objectName
