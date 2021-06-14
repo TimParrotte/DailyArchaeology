@@ -14,10 +14,4 @@ public class HarvardApiService extends MuseumApiCommon {
 	
 	private final String harvardApiKey = "e8bc310d-3fb5-4cf9-8b9a-b458ce65140b";
 
-	@Override
-	public HarvardItem convertJsonToItem(String apiResponseJson) throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-		return objectMapper.readValue(apiResponseJson, HarvardItem.class);
-	}
 }

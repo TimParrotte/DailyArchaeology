@@ -116,7 +116,7 @@ public class HarvardApiServiceTest {
 		
 		// WHEN
 		
-		HarvardItem item = harvardApiService.convertJsonToItem(jsonString);
+		HarvardItem item = harvardApiService.convertJsonToPojo(jsonString, HarvardItem.class);
 		
 		// THEN
 		

@@ -33,24 +33,11 @@ public class MetApiService extends MuseumApiCommon {
         return baseMetApiUrl + metApiUrlObjectEndpoint + "/" + itemNumber;
     }
     
-    @Override
-	public MetItem convertJsonToItem(String apiResponseJson) throws JsonMappingException, JsonProcessingException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-		return objectMapper.readValue(apiResponseJson, MetItem.class);
-	}
-    
-	public MetSearchResult convertJsonToSearchResult(String apiResponseJson) throws JsonProcessingException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-		return objectMapper.readValue(apiResponseJson, MetSearchResult.class);
-	}
-	
 	public ArrayList<Integer> getAncientOldWorldObjectIds() throws JsonProcessingException, IOException, InterruptedException {
     	ArrayList<Integer> objectIds = new ArrayList<>();
-    	MetSearchResult nearEastResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(ancientNearEastDepartmentNumber), httpClient));
-    	MetSearchResult egyptianResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(egyptianArtDepartmentNumber), httpClient));
-    	MetSearchResult grecoRomanResult = convertJsonToSearchResult(getApiResponseAsJson(constructApiRequestForDepartment(greekAndRomanArtDepartmentNumber), httpClient));
+    	MetSearchResult nearEastResult = convertJsonToPojo(getApiResponseAsJson(constructApiRequestForDepartment(ancientNearEastDepartmentNumber), httpClient), MetSearchResult.class);
+    	MetSearchResult egyptianResult = convertJsonToPojo(getApiResponseAsJson(constructApiRequestForDepartment(egyptianArtDepartmentNumber), httpClient), MetSearchResult.class);
+    	MetSearchResult grecoRomanResult = convertJsonToPojo(getApiResponseAsJson(constructApiRequestForDepartment(greekAndRomanArtDepartmentNumber), httpClient), MetSearchResult.class);
     	objectIds.addAll(nearEastResult.getObjectIDs());
     	objectIds.addAll(egyptianResult.getObjectIDs());
     	objectIds.addAll(grecoRomanResult.getObjectIDs());
@@ -60,7 +47,7 @@ public class MetApiService extends MuseumApiCommon {
 	public MetItem getItemForDisplay() throws JsonProcessingException, IOException, InterruptedException {
 		String url = constructApiRequestForItem(getRandomItemId(getAncientOldWorldObjectIds()));
 		String apiResponse = getApiResponseAsJson(url, httpClient);
-		return convertJsonToItem(apiResponse);
+		return convertJsonToPojo(apiResponse, MetItem.class);
 	}
 
 	public Integer getRandomItemId(ArrayList<Integer> objectIds) throws IOException {

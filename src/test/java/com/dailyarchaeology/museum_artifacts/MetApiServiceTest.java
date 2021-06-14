@@ -55,7 +55,7 @@ public class MetApiServiceTest {
 		
 		// WHEN
 		String apiResponse = MetApiService.getApiResponseAsJson(searchResultUrl, httpClient);
-		MetSearchResult searchResult = metApiService.convertJsonToSearchResult(apiResponse);
+		MetSearchResult searchResult = metApiService.convertJsonToPojo(apiResponse, MetSearchResult.class);
 				
 		// THEN
 		Assertions.assertThat(searchResult).isNotNull();
@@ -156,7 +156,7 @@ public class MetApiServiceTest {
 				+ "}";
 		
 		// WHEN
-		MetItem item = metApiService.convertJsonToItem(jsonString);
+		MetItem item = metApiService.convertJsonToPojo(jsonString, MetItem.class);
 		
 		// THEN
 		Assertions.assertThat(item).isNotNull();
@@ -235,7 +235,7 @@ public class MetApiServiceTest {
 		for (Integer testObjectId : testObjectIds) {
 			String url = MetApiService.constructApiRequestForItem(testObjectId);
 			String response = MetApiService.getApiResponseAsJson(url, httpClient);
-			MetItem item = metApiService.convertJsonToItem(response);
+			MetItem item = metApiService.convertJsonToPojo(response, MetItem.class);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isIn(departmentIds);
 		}
@@ -245,7 +245,7 @@ public class MetApiServiceTest {
 	public void assertOnlyAncientNearEastArtifacts() throws JsonProcessingException, IOException, InterruptedException {
 		// GIVEN
 		Integer nearEastDeptNum = 3;
-    	MetSearchResult nearEastResult = metApiService.convertJsonToSearchResult(MetApiService.getApiResponseAsJson(MetApiService.constructApiRequestForDepartment(nearEastDeptNum), httpClient));
+    	MetSearchResult nearEastResult = metApiService.convertJsonToPojo(MetApiService.getApiResponseAsJson(MetApiService.constructApiRequestForDepartment(nearEastDeptNum), httpClient), MetSearchResult.class);
     	List<Integer> objectIds = nearEastResult.getObjectIDs();
     	
 		// WHEN
@@ -256,7 +256,7 @@ public class MetApiServiceTest {
     	for (Integer testObjectId : testObjectIds) {
 			String url = MetApiService.constructApiRequestForItem(testObjectId);
 			String response = MetApiService.getApiResponseAsJson(url, httpClient);
-			MetItem item = metApiService.convertJsonToItem(response);
+			MetItem item = metApiService.convertJsonToPojo(response, MetItem.class);
 			Assertions.assertThat(item.getDepartment()).isNotNull();
 			Assertions.assertThat(item.getDepartment()).isEqualTo("Ancient Near Eastern Art");
     	}

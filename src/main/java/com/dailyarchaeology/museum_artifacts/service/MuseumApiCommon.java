@@ -7,7 +7,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class MuseumApiCommon {
 	
@@ -18,6 +21,9 @@ public abstract class MuseumApiCommon {
 		   return response.body();
 	   }
 
-	abstract public <T> Object convertJsonToItem(String apiReponseJson) throws JsonParseException, JsonMappingException, IOException;
-	
+	public <T> T convertJsonToPojo(String jsonString, Class<T> pojo) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		return objectMapper.readValue(jsonString, pojo);
+	}
 }

@@ -7,6 +7,7 @@ public class MetElementMeasurements {
 	private Double height;
 	private Double length;
 	private Double thickness;
+	private Double weight;
 	private Double width;
 	
 	public Double getDepth() {
@@ -38,6 +39,12 @@ public class MetElementMeasurements {
 	}
 	public void setThickness(Double thickness) {
 		this.thickness = thickness;
+	}
+	public Double getWeight() {
+		return weight;
+	}
+	public void setWeight(Double weight) {
+		this.weight = weight;
 	}
 	public Double getWidth() {
 		return width;
