@@ -1,2 +1,3 @@
 # DailyArchaeology
-A simple web app that accesses the Metropolitan Museum of Art's collection API and displays a random ancient artifact to the user.
+
+Daily Archaeology is a webapp that uses the public Open Access APIs of educational institutions around the world to educate the user about our shared ancient past.
