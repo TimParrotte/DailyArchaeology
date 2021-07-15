@@ -3,16 +3,16 @@ package com.dailyarchaeology.museum_artifacts.domain;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SearchResult {
+public class MetSearchResult {
     private int total;
     private ArrayList<Integer> objectIDs;
 
-    public SearchResult(int total, ArrayList<Integer> objectIDs) {
+    public MetSearchResult(int total, ArrayList<Integer> objectIDs) {
         this.total = total;
         this.objectIDs = objectIDs;
     }
 
-	public SearchResult() {
+	public MetSearchResult() {
 	}
 
 	public int getTotal() {
@@ -35,7 +35,7 @@ public class SearchResult {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SearchResult results = (SearchResult) o;
+        MetSearchResult results = (MetSearchResult) o;
         return getTotal() == results.getTotal() && getObjectIDs().equals(results.getObjectIDs());
     }
 

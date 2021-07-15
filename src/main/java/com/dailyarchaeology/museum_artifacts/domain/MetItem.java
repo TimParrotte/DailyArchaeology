@@ -3,7 +3,7 @@ package com.dailyarchaeology.museum_artifacts.domain;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Item {
+public class MetItem implements MuseumItem{
     private Integer objectId;
     private Boolean isHighlight;
     private String accessionNumber;
@@ -12,7 +12,7 @@ public class Item {
     private String primaryImage;
     private String primaryImageSmall;
     private ArrayList<String> additionalImages;
-    private ArrayList<String> constituents;
+    private ArrayList<MetConstituents> constituents;
     private String department;
     private String objectName;
     private String title;
@@ -39,7 +39,7 @@ public class Item {
     private String medium;
     private String dimensions;
     private Float dimensionsParsed;
-    private ArrayList<String> measurements;
+    private ArrayList<MetMeasurements> measurements;
     private String creditLine;
     private String geographyType;
     private String city;
@@ -58,7 +58,7 @@ public class Item {
     private String metadataDate;
     private String repository;
     private String objectURL;
-    private ArrayList<String> tags;
+    private ArrayList<MetTags> tags;
     private String objectWikidata_URL;
     private Boolean isTimelineWork;
     private String galleryNumber;
@@ -127,12 +127,12 @@ public class Item {
         this.additionalImages = additionalImages;
     }
 
-    public ArrayList<String> getConstituents() {
-        return constituents;
+    public ArrayList<MetConstituents> getConstituents() {
+    	return constituents;
     }
-
-    public void setConstituents(ArrayList<String> constituents) {
-        this.constituents = constituents;
+    
+    public void setConstituents(ArrayList<MetConstituents> constituents) {
+    	this.constituents = constituents;
     }
 
     public String getDepartment() {
@@ -343,12 +343,12 @@ public class Item {
         this.dimensionsParsed = dimensionsParsed;
     }
 
-    public ArrayList<String> getMeasurements() {
-        return measurements;
+    public ArrayList<MetMeasurements> getMeasurements() {
+    	return measurements;
     }
-
-    public void setMeasurements(ArrayList<String> measurements) {
-        this.measurements = measurements;
+    
+    public void setMeasurements(ArrayList<MetMeasurements> measurements) {
+    	this.measurements = measurements;
     }
 
     public String getCreditLine() {
@@ -495,12 +495,12 @@ public class Item {
         this.objectURL = objectURL;
     }
 
-    public ArrayList<String> getTags() {
-        return tags;
+    public ArrayList<MetTags> getTags() {
+    	return tags;
     }
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
+    
+    public void setTags(ArrayList<MetTags> tags) {
+    	this.tags = tags;
     }
 
     public String getObjectWikidata_URL() {
@@ -531,7 +531,7 @@ public class Item {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
+        MetItem item = (MetItem) o;
         return getObjectId() == item.getObjectId();
     }
 
@@ -542,25 +542,75 @@ public class Item {
 
     @Override
 	public String toString() {
-		return "Item [objectId=" + objectId + ", isHighlight=" + isHighlight + ", accessionNumber=" + accessionNumber
-				+ ", accessionYear=" + accessionYear + ", isPublicDomain=" + isPublicDomain + ", primaryImage="
-				+ primaryImage + ", primaryImageSmall=" + primaryImageSmall + ", additionalImages=" + additionalImages
-				+ ", constituents=" + constituents + ", department=" + department + ", objectName=" + objectName
-				+ ", title=" + title + ", culture=" + culture + ", period=" + period + ", dynasty=" + dynasty
-				+ ", reign=" + reign + ", portfolio=" + portfolio + ", artistRole=" + artistRole + ", artistPrefix="
-				+ artistPrefix + ", artistDisplayName=" + artistDisplayName + ", artistDisplayBio=" + artistDisplayBio
-				+ ", artistSuffix=" + artistSuffix + ", artistAlphaSort=" + artistAlphaSort + ", artistNationality="
-				+ artistNationality + ", artistBeginDate=" + artistBeginDate + ", artistEndDate=" + artistEndDate
-				+ ", artistGender=" + artistGender + ", artistWikidata_URL=" + artistWikidata_URL + ", artistULAN_URL="
-				+ artistULAN_URL + ", objectDate=" + objectDate + ", objectBeginDate=" + objectBeginDate
-				+ ", objectEndDate=" + objectEndDate + ", medium=" + medium + ", dimensions=" + dimensions
-				+ ", dimensionsParsed=" + dimensionsParsed + ", measurements=" + measurements + ", creditLine="
-				+ creditLine + ", geographyType=" + geographyType + ", city=" + city + ", state=" + state + ", county="
-				+ county + ", country=" + country + ", region=" + region + ", subregion=" + subregion + ", locale="
-				+ locale + ", locus=" + locus + ", excavation=" + excavation + ", river=" + river + ", classification="
-				+ classification + ", rightsAndReproduction=" + rightsAndReproduction + ", linkResource=" + linkResource
-				+ ", metadataDate=" + metadataDate + ", repository=" + repository + ", objectURL=" + objectURL
-				+ ", tags=" + tags + ", objectWikidata_URL=" + objectWikidata_URL + ", isTimelineWork=" + isTimelineWork
-				+ ", galleryNumber=" + galleryNumber + "]";
+		return "MetItem [objectId=" + objectId + ", " +
+                "isHighlight=" + isHighlight + ", " +
+                "accessionNumber=" + accessionNumber +
+                ", accessionYear=" + accessionYear + ", " +
+                "isPublicDomain=" + isPublicDomain +
+                ", primaryImage=" + primaryImage +
+                ", primaryImageSmall=" + primaryImageSmall +
+                ", additionalImages=" + additionalImages +
+				", constituents=" + constituents +
+                ", department=" + department +
+                ", objectName=" + objectName +
+				", title=" + title +
+                ", culture=" + culture +
+                ", period=" + period +
+                ", dynasty=" + dynasty +
+				", reign=" + reign +
+                ", portfolio=" + portfolio +
+                ", artistRole=" + artistRole +
+                ", artistPrefix=" + artistPrefix +
+                ", artistDisplayName=" + artistDisplayName +
+                ", artistDisplayBio=" + artistDisplayBio +
+				", artistSuffix=" + artistSuffix +
+                ", artistAlphaSort=" + artistAlphaSort +
+                ", artistNationality=" + artistNationality +
+                ", artistBeginDate=" + artistBeginDate +
+                ", artistEndDate=" + artistEndDate +
+				", artistGender=" + artistGender +
+                ", artistWikidata_URL=" + artistWikidata_URL +
+                ", artistULAN_URL=" + artistULAN_URL +
+                ", objectDate=" + objectDate +
+                ", objectBeginDate=" + objectBeginDate +
+				", objectEndDate=" + objectEndDate +
+                ", medium=" + medium +
+                ", dimensions=" + dimensions +
+				", dimensionsParsed=" + dimensionsParsed +
+                ", measurements=" + measurements +
+                ", creditLine=" + creditLine +
+                ", geographyType=" + geographyType +
+                ", city=" + city +
+                ", state=" + state +
+                ", county=" + county +
+                ", country=" + country +
+                ", region=" + region +
+                ", subregion=" + subregion +
+                ", locale=" + locale +
+                ", locus=" + locus +
+                ", excavation=" + excavation +
+                ", river=" + river +
+                ", classification=" + classification +
+                ", rightsAndReproduction=" + rightsAndReproduction +
+                ", linkResource=" + linkResource +
+				", metadataDate=" + metadataDate +
+                ", repository=" + repository +
+                ", objectURL=" + objectURL +
+				", tags=" + tags +
+                ", objectWikidata_URL=" + objectWikidata_URL +
+                ", isTimelineWork=" + isTimelineWork +
+				", galleryNumber=" + galleryNumber + "]";
 	}
+
+	@Override
+	public UniversalItemDto toUniversalItemDto() {
+        return new UniversalItemDto(
+                this.getTitle(),
+                this.getPrimaryImageSmall(),
+                this.getObjectName(),
+                this.getCulture(),
+                this.getObjectDate(),
+                this.getMedium()
+        );
+    }
 }
