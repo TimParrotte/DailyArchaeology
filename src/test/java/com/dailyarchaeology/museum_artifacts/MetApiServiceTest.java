@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.dailyarchaeology.museum_artifacts.domain.UniversalItemDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,6 +35,72 @@ public class MetApiServiceTest {
 
 	@Autowired
 	private MetApiService metApiService;
+	String jsonString = "{"
+			+ "\"objectID\":768252,"
+			+ "\"isHighlight\":false,"
+			+ "\"accessionNumber\":\"2011.604.12.3\","
+			+ "\"accessionYear\":\"2011\","
+			+ "\"isPublicDomain\":true,"
+			+ "\"primaryImage\":\"https://images.metmuseum.org/CRDImages/gr/original/DVB14699_1_ff.jpg\","
+			+ "\"primaryImageSmall\":\"https://images.metmuseum.org/CRDImages/gr/web-large/DVB14699_1_ff.jpg\","
+			+ "\"additionalImages\":[\"https://images.metmuseum.org/CRDImages/gr/original/DVB14699_2_ff.jpg\"],"
+			+ "\"constituents\":[{"
+			+ "\"constituentID\":49271,"
+			+ "\"role\":\"\","
+			+ "\"name\":\"Attributed to the Black Fury Group\","
+			+ "\"constituentULAN_URL\":\"http://vocab.getty.edu/page/ulan/500007172\","
+			+ "\"constituentWikidata_URL\":\"https://www.wikidata.org/wiki/Q37633092\","
+			+ "\"gender\":\"\""
+			+ "}],"
+			+ "\"department\":\"Greek and Roman Art\","
+			+ "\"objectName\":\"Undetermined closed shape\","
+			+ "\"title\":\"Terracotta fragment of a closed shape\","
+			+ "\"culture\":\"Greek, South Italian, Apulian\","
+			+ "\"period\":\"Classical\","
+			+ "\"dynasty\":\"\","
+			+ "\"reign\":\"\","
+			+ "\"portfolio\":\"\","
+			+ "\"artistRole\":\"\","
+			+ "\"artistPrefix\":\"Attributed to the\","
+			+ "\"artistDisplayName\":\"Black Fury Group\","
+			+ "\"artistDisplayBio\":\"\","
+			+ "\"artistSuffix\":\"? [DvB]\","
+			+ "\"artistAlphaSort\":\"Black Fury Group\","
+			+ "\"artistNationality\":\"\","
+			+ "\"artistBeginDate\":\"\","
+			+ "\"artistEndDate\":\"\","
+			+ "\"artistGender\":\"\","
+			+ "\"artistWikidata_URL\":\"https://www.wikidata.org/wiki/Q37633092\","
+			+ "\"artistULAN_URL\":\"http://vocab.getty.edu/page/ulan/500007172\","
+			+ "\"objectDate\":\"first quarter of the 4th century B.C.\","
+			+ "\"objectBeginDate\":-530,"
+			+ "\"objectEndDate\":-300,"
+			+ "\"medium\":\"Terracotta\","
+			+ "\"dimensions\":\"\","
+			+ "\"measurements\":null,"
+			+ "\"creditLine\":\"Gift of Dietrich von Bothmer, Distinguished Research Curator, Greek and Roman Art, 2011\","
+			+ "\"geographyType\":\"\","
+			+ "\"city\":\"\","
+			+ "\"state\":\"\","
+			+ "\"county\":\"\","
+			+ "\"country\":\"\","
+			+ "\"region\":\"\","
+			+ "\"subregion\":\"\","
+			+ "\"locale\":\"\","
+			+ "\"locus\":\"\","
+			+ "\"excavation\":\"\","
+			+ "\"river\":\"\","
+			+ "\"classification\":\"Vases\","
+			+ "\"rightsAndReproduction\":\"\","
+			+ "\"linkResource\":\"\","
+			+ "\"metadataDate\":\"2020-11-14T04:40:04.457Z\","
+			+ "\"repository\":\"Metropolitan Museum of Art, New York, NY\","
+			+ "\"objectURL\":\"https://www.metmuseum.org/art/collection/search/768252\","
+			+ "\"tags\":null,"
+			+ "\"objectWikidata_URL\":\"\","
+			+ "\"isTimelineWork\":false,"
+			+ "\"GalleryNumber\":\"157\""
+			+ "}";
 
 	@Test
 	public void testThatAStringResponseIsReturnedFromTheMetApi() throws IOException, InterruptedException  {
@@ -87,74 +154,6 @@ public class MetApiServiceTest {
 	//TODO: Add sub-class value assertions to this test
 	@Test
 	public void assertThatItemObjectSuccessfullyCreatedFromTheMetApi() throws JsonMappingException, JsonProcessingException {
-		// GIVEN
-		String jsonString = "{"
-				+ "\"objectID\":768252,"
-				+ "\"isHighlight\":false,"
-				+ "\"accessionNumber\":\"2011.604.12.3\","
-				+ "\"accessionYear\":\"2011\","
-				+ "\"isPublicDomain\":true,"
-				+ "\"primaryImage\":\"https://images.metmuseum.org/CRDImages/gr/original/DVB14699_1_ff.jpg\","
-				+ "\"primaryImageSmall\":\"https://images.metmuseum.org/CRDImages/gr/web-large/DVB14699_1_ff.jpg\","
-				+ "\"additionalImages\":[\"https://images.metmuseum.org/CRDImages/gr/original/DVB14699_2_ff.jpg\"],"
-				+ "\"constituents\":[{"
-					+ "\"constituentID\":49271,"
-					+ "\"role\":\"\","
-					+ "\"name\":\"Attributed to the Black Fury Group\","
-					+ "\"constituentULAN_URL\":\"http://vocab.getty.edu/page/ulan/500007172\","
-					+ "\"constituentWikidata_URL\":\"https://www.wikidata.org/wiki/Q37633092\","
-					+ "\"gender\":\"\""
-					+ "}],"
-				+ "\"department\":\"Greek and Roman Art\","
-				+ "\"objectName\":\"Undetermined closed shape\","
-				+ "\"title\":\"Terracotta fragment of a closed shape\","
-				+ "\"culture\":\"Greek, South Italian, Apulian\","
-				+ "\"period\":\"Classical\","
-				+ "\"dynasty\":\"\","
-				+ "\"reign\":\"\","
-				+ "\"portfolio\":\"\","
-				+ "\"artistRole\":\"\","
-				+ "\"artistPrefix\":\"Attributed to the\","
-				+ "\"artistDisplayName\":\"Black Fury Group\","
-				+ "\"artistDisplayBio\":\"\","
-				+ "\"artistSuffix\":\"? [DvB]\","
-				+ "\"artistAlphaSort\":\"Black Fury Group\","
-				+ "\"artistNationality\":\"\","
-				+ "\"artistBeginDate\":\"\","
-				+ "\"artistEndDate\":\"\","
-				+ "\"artistGender\":\"\","
-				+ "\"artistWikidata_URL\":\"https://www.wikidata.org/wiki/Q37633092\","
-				+ "\"artistULAN_URL\":\"http://vocab.getty.edu/page/ulan/500007172\","
-				+ "\"objectDate\":\"first quarter of the 4th century B.C.\","
-				+ "\"objectBeginDate\":-530,"
-				+ "\"objectEndDate\":-300,"
-				+ "\"medium\":\"Terracotta\","
-				+ "\"dimensions\":\"\","
-				+ "\"measurements\":null,"
-				+ "\"creditLine\":\"Gift of Dietrich von Bothmer, Distinguished Research Curator, Greek and Roman Art, 2011\","
-				+ "\"geographyType\":\"\","
-				+ "\"city\":\"\","
-				+ "\"state\":\"\","
-				+ "\"county\":\"\","
-				+ "\"country\":\"\","
-				+ "\"region\":\"\","
-				+ "\"subregion\":\"\","
-				+ "\"locale\":\"\","
-				+ "\"locus\":\"\","
-				+ "\"excavation\":\"\","
-				+ "\"river\":\"\","
-				+ "\"classification\":\"Vases\","
-				+ "\"rightsAndReproduction\":\"\","
-				+ "\"linkResource\":\"\","
-				+ "\"metadataDate\":\"2020-11-14T04:40:04.457Z\","
-				+ "\"repository\":\"Metropolitan Museum of Art, New York, NY\","
-				+ "\"objectURL\":\"https://www.metmuseum.org/art/collection/search/768252\","
-				+ "\"tags\":null,"
-				+ "\"objectWikidata_URL\":\"\","
-				+ "\"isTimelineWork\":false,"
-				+ "\"GalleryNumber\":\"157\""
-				+ "}";
-		
 		// WHEN
 		MetItem item = metApiService.convertJsonToPojo(jsonString, MetItem.class);
 		
@@ -271,5 +270,20 @@ public class MetApiServiceTest {
 		// THEN
 		Assertions.assertThat(apiRequest).contains("https://collectionapi.metmuseum.org/public/collection/v1/objects/");
 		Assertions.assertThat(itemNumber).isGreaterThan(0);
+	}
+
+	@Test
+	public void assertThatUniversalItemDtoIsCreatedSuccessfully() throws JsonProcessingException {
+		// WHEN
+		UniversalItemDto item = metApiService.convertJsonToPojo(jsonString, MetItem.class)
+				.toUniversalItemDto();
+
+		// THEN
+		Assertions.assertThat(item.getTitle()).isEqualTo("Terracotta fragment of a closed shape");
+		Assertions.assertThat(item.getImageUrl()).isEqualTo("https://images.metmuseum.org/CRDImages/gr/web-large/DVB14699_1_ff.jpg");
+		Assertions.assertThat(item.getDescription()).isEqualTo("Undetermined closed shape");
+		Assertions.assertThat(item.getCulture()).isEqualTo("Greek, South Italian, Apulian");
+		Assertions.assertThat(item.getEra()).isEqualTo("first quarter of the 4th century B.C.");
+		Assertions.assertThat(item.getMedium()).isEqualTo("Terracotta");
 	}
 }

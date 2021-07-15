@@ -2,7 +2,7 @@ package com.dailyarchaeology.museum_artifacts.domain;
 
 import java.util.List;
 
-public class HarvardItem {
+public class HarvardItem implements MuseumItem{
 	
 	private String accessionMethod;
 	private Integer accessionYear;
@@ -554,5 +554,10 @@ public class HarvardItem {
 
 	public void setWorkTypes(List<HarvardWorkType> workTypes) {
 		this.workTypes = workTypes;
-	} 
+	}
+
+	@Override
+	public UniversalItemDto toUniversalItemDto() {
+		return null;
+	}
 }

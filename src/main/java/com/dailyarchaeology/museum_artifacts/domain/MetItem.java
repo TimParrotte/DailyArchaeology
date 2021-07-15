@@ -3,7 +3,7 @@ package com.dailyarchaeology.museum_artifacts.domain;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MetItem {
+public class MetItem implements MuseumItem{
     private Integer objectId;
     private Boolean isHighlight;
     private String accessionNumber;
@@ -542,25 +542,75 @@ public class MetItem {
 
     @Override
 	public String toString() {
-		return "MetItem [objectId=" + objectId + ", isHighlight=" + isHighlight + ", accessionNumber=" + accessionNumber
-				+ ", accessionYear=" + accessionYear + ", isPublicDomain=" + isPublicDomain + ", primaryImage="
-				+ primaryImage + ", primaryImageSmall=" + primaryImageSmall + ", additionalImages=" + additionalImages
-				+ ", constituents=" + constituents + ", department=" + department + ", objectName=" + objectName
-				+ ", title=" + title + ", culture=" + culture + ", period=" + period + ", dynasty=" + dynasty
-				+ ", reign=" + reign + ", portfolio=" + portfolio + ", artistRole=" + artistRole + ", artistPrefix="
-				+ artistPrefix + ", artistDisplayName=" + artistDisplayName + ", artistDisplayBio=" + artistDisplayBio
-				+ ", artistSuffix=" + artistSuffix + ", artistAlphaSort=" + artistAlphaSort + ", artistNationality="
-				+ artistNationality + ", artistBeginDate=" + artistBeginDate + ", artistEndDate=" + artistEndDate
-				+ ", artistGender=" + artistGender + ", artistWikidata_URL=" + artistWikidata_URL + ", artistULAN_URL="
-				+ artistULAN_URL + ", objectDate=" + objectDate + ", objectBeginDate=" + objectBeginDate
-				+ ", objectEndDate=" + objectEndDate + ", medium=" + medium + ", dimensions=" + dimensions
-				+ ", dimensionsParsed=" + dimensionsParsed + ", measurements=" + measurements + ", creditLine="
-				+ creditLine + ", geographyType=" + geographyType + ", city=" + city + ", state=" + state + ", county="
-				+ county + ", country=" + country + ", region=" + region + ", subregion=" + subregion + ", locale="
-				+ locale + ", locus=" + locus + ", excavation=" + excavation + ", river=" + river + ", classification="
-				+ classification + ", rightsAndReproduction=" + rightsAndReproduction + ", linkResource=" + linkResource
-				+ ", metadataDate=" + metadataDate + ", repository=" + repository + ", objectURL=" + objectURL
-				+ ", tags=" + tags + ", objectWikidata_URL=" + objectWikidata_URL + ", isTimelineWork=" + isTimelineWork
-				+ ", galleryNumber=" + galleryNumber + "]";
+		return "MetItem [objectId=" + objectId + ", " +
+                "isHighlight=" + isHighlight + ", " +
+                "accessionNumber=" + accessionNumber +
+                ", accessionYear=" + accessionYear + ", " +
+                "isPublicDomain=" + isPublicDomain +
+                ", primaryImage=" + primaryImage +
+                ", primaryImageSmall=" + primaryImageSmall +
+                ", additionalImages=" + additionalImages +
+				", constituents=" + constituents +
+                ", department=" + department +
+                ", objectName=" + objectName +
+				", title=" + title +
+                ", culture=" + culture +
+                ", period=" + period +
+                ", dynasty=" + dynasty +
+				", reign=" + reign +
+                ", portfolio=" + portfolio +
+                ", artistRole=" + artistRole +
+                ", artistPrefix=" + artistPrefix +
+                ", artistDisplayName=" + artistDisplayName +
+                ", artistDisplayBio=" + artistDisplayBio +
+				", artistSuffix=" + artistSuffix +
+                ", artistAlphaSort=" + artistAlphaSort +
+                ", artistNationality=" + artistNationality +
+                ", artistBeginDate=" + artistBeginDate +
+                ", artistEndDate=" + artistEndDate +
+				", artistGender=" + artistGender +
+                ", artistWikidata_URL=" + artistWikidata_URL +
+                ", artistULAN_URL=" + artistULAN_URL +
+                ", objectDate=" + objectDate +
+                ", objectBeginDate=" + objectBeginDate +
+				", objectEndDate=" + objectEndDate +
+                ", medium=" + medium +
+                ", dimensions=" + dimensions +
+				", dimensionsParsed=" + dimensionsParsed +
+                ", measurements=" + measurements +
+                ", creditLine=" + creditLine +
+                ", geographyType=" + geographyType +
+                ", city=" + city +
+                ", state=" + state +
+                ", county=" + county +
+                ", country=" + country +
+                ", region=" + region +
+                ", subregion=" + subregion +
+                ", locale=" + locale +
+                ", locus=" + locus +
+                ", excavation=" + excavation +
+                ", river=" + river +
+                ", classification=" + classification +
+                ", rightsAndReproduction=" + rightsAndReproduction +
+                ", linkResource=" + linkResource +
+				", metadataDate=" + metadataDate +
+                ", repository=" + repository +
+                ", objectURL=" + objectURL +
+				", tags=" + tags +
+                ", objectWikidata_URL=" + objectWikidata_URL +
+                ", isTimelineWork=" + isTimelineWork +
+				", galleryNumber=" + galleryNumber + "]";
 	}
+
+	@Override
+	public UniversalItemDto toUniversalItemDto() {
+        return new UniversalItemDto(
+                this.getTitle(),
+                this.getPrimaryImageSmall(),
+                this.getObjectName(),
+                this.getCulture(),
+                this.getObjectDate(),
+                this.getMedium()
+        );
+    }
 }

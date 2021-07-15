@@ -1,7 +1,8 @@
 package com.dailyarchaeology.museum_artifacts.domain;
 
 public class MetElementMeasurements {
-	
+
+	private Double body;
 	private Double depth;
 	private Double diameter;
 	private Double height;
@@ -9,7 +10,9 @@ public class MetElementMeasurements {
 	private Double thickness;
 	private Double weight;
 	private Double width;
-	
+
+	public Double getBody() { return body; }
+	public void setBody(Double body) { this.body = body; }
 	public Double getDepth() {
 		return depth;
 	}

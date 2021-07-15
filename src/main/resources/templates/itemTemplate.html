@@ -33,15 +33,15 @@
 	<body>
 		<div class="flex-container">
 				<div class="image-box">
-					<img th:src="${item.primaryImageSmall}" class="artifact">
+					<img th:src="${imageUrl}" class="artifact"> -->
 				</div>
 				<div class="info-box">
 					<h3>Welcome to Daily Archaeology!</h3>
-					<h4 th:text="'Object Name: ' + ${item.objectName}" />
-					<h4 th:text="'Title: ' + ${item.title}" />
-					<h4 th:text="'Culture: ' + ${item.culture}" />
-					<h4 th:text="'Date: ' + ${item.objectDate}" /> 
-					<h4 th:text="'Medium: ' + ${item.medium}" />
+					<h4 th:text="'Title: ' + ${title}" />
+					<h4 th:text="'Description: ' + ${description}" />
+					<h4 th:text="'Culture: ' + ${culture}" />
+					<h4 th:text="'Era: ' + ${era}" />
+					<h4 th:text="'Medium: ' + ${medium}" />
 					<input type="button" value="Show Me Another One!" onclick="location.reload();">
 					<p>All content is provided by The Metropolitan Museum of Art Open Access API. All content is in the public domain.</p>
 				</div>
